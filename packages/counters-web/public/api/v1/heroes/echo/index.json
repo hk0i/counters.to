@@ -1,0 +1,447 @@
+{
+  "data": {
+    "id": "echo",
+    "name": "Echo",
+    "role": "damage",
+    "damageTypes": [
+      "hitscan",
+      "explosive"
+    ],
+    "mechanics": [
+      "mobility-tool",
+      "flight"
+    ],
+    "strategy": {
+      "archetype": "dive",
+      "tags": [
+        "flanker",
+        "pick-potential"
+      ]
+    },
+    "weakTo": [
+      "crowd-control",
+      "hitscan"
+    ],
+    "strongTo": [
+      "barrier",
+      "projectile"
+    ],
+    "threats": [
+      {
+        "heroId": "ana",
+        "heroName": "Ana",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "ashe",
+        "heroName": "Ashe",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "baptiste",
+        "heroName": "Baptiste",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "bastion",
+        "heroName": "Bastion",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "brigitte",
+        "heroName": "Brigitte",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "cassidy",
+        "heroName": "Cassidy",
+        "matchedTraits": [
+          "crowd-control",
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "domina",
+        "heroName": "Domina",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "doomfist",
+        "heroName": "Doomfist",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "emre",
+        "heroName": "Emre",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "hanzo",
+        "heroName": "Hanzo",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "hazard",
+        "heroName": "Hazard",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "illari",
+        "heroName": "Illari",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "mauga",
+        "heroName": "Mauga",
+        "matchedTraits": [
+          "crowd-control",
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "mei",
+        "heroName": "Mei",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "mizuki",
+        "heroName": "Mizuki",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "orisa",
+        "heroName": "Orisa",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "ramattra",
+        "heroName": "Ramattra",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "reinhardt",
+        "heroName": "Reinhardt",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "roadhog",
+        "heroName": "Roadhog",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "sierra",
+        "heroName": "Sierra",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "sigma",
+        "heroName": "Sigma",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "sojourn",
+        "heroName": "Sojourn",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "soldier-76",
+        "heroName": "Soldier: 76",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "sombra",
+        "heroName": "Sombra",
+        "matchedTraits": [
+          "crowd-control",
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "tracer",
+        "heroName": "Tracer",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "widowmaker",
+        "heroName": "Widowmaker",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "wrecking-ball",
+        "heroName": "Wrecking Ball",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "zenyatta",
+        "heroName": "Zenyatta",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      }
+    ],
+    "advantages": [
+      {
+        "heroId": "ana",
+        "heroName": "Ana",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "anran",
+        "heroName": "Anran",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "baptiste",
+        "heroName": "Baptiste",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "brigitte",
+        "heroName": "Brigitte",
+        "matchedTraits": [
+          "barrier",
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "domina",
+        "heroName": "Domina",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "dva",
+        "heroName": "D.Va",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "freja",
+        "heroName": "Freja",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "genji",
+        "heroName": "Genji",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "hanzo",
+        "heroName": "Hanzo",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "jetpack-cat",
+        "heroName": "Jetpack Cat",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "junker-queen",
+        "heroName": "Junker Queen",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "juno",
+        "heroName": "Juno",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "kiriko",
+        "heroName": "Kiriko",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "lifeweaver",
+        "heroName": "Lifeweaver",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "lucio",
+        "heroName": "L\u00facio",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "mei",
+        "heroName": "Mei",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "mizuki",
+        "heroName": "Mizuki",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "moira",
+        "heroName": "Moira",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "orisa",
+        "heroName": "Orisa",
+        "matchedTraits": [
+          "barrier",
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "ramattra",
+        "heroName": "Ramattra",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "reinhardt",
+        "heroName": "Reinhardt",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "sigma",
+        "heroName": "Sigma",
+        "matchedTraits": [
+          "barrier",
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "sojourn",
+        "heroName": "Sojourn",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "symmetra",
+        "heroName": "Symmetra",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "torbjorn",
+        "heroName": "Torbj\u00f6rn",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "vendetta",
+        "heroName": "Vendetta",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "winston",
+        "heroName": "Winston",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "wuyang",
+        "heroName": "Wuyang",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "zarya",
+        "heroName": "Zarya",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "zenyatta",
+        "heroName": "Zenyatta",
+        "matchedTraits": [
+          "projectile"
+        ]
+      }
+    ],
+    "htmlContent": "<h2>Core Playbook</h2>\n<p>Echo flies around a flank to threaten the backline with Sticky Bombs and Focusing Beam, using Duplicate on a high-value target to briefly borrow their kit for a fight-winning burst.</p>\n<h2>Tactical Caveats</h2>\n<p>She has no self-sustain and dies quickly to focused hitscan fire; a whiffed Duplicate on the wrong target wastes her ultimate almost entirely.</p>"
+  }
+}

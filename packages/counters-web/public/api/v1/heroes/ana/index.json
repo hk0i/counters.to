@@ -1,0 +1,587 @@
+{
+  "data": {
+    "id": "ana",
+    "name": "Ana",
+    "role": "support",
+    "damageTypes": [
+      "projectile"
+    ],
+    "mechanics": [
+      "self-heal",
+      "crowd-control",
+      "anti-heal"
+    ],
+    "strategy": {
+      "archetype": "backline",
+      "tags": [
+        "pick-potential",
+        "disruptor"
+      ]
+    },
+    "weakTo": [
+      "mobility-tool",
+      "crowd-control"
+    ],
+    "strongTo": [
+      "self-heal",
+      "lifesteal"
+    ],
+    "threats": [
+      {
+        "heroId": "anran",
+        "heroName": "Anran",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "ashe",
+        "heroName": "Ashe",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "baptiste",
+        "heroName": "Baptiste",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "brigitte",
+        "heroName": "Brigitte",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "cassidy",
+        "heroName": "Cassidy",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "domina",
+        "heroName": "Domina",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "doomfist",
+        "heroName": "Doomfist",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "dva",
+        "heroName": "D.Va",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "echo",
+        "heroName": "Echo",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "emre",
+        "heroName": "Emre",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "freja",
+        "heroName": "Freja",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "genji",
+        "heroName": "Genji",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "hanzo",
+        "heroName": "Hanzo",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "hazard",
+        "heroName": "Hazard",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "illari",
+        "heroName": "Illari",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "jetpack-cat",
+        "heroName": "Jetpack Cat",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "junker-queen",
+        "heroName": "Junker Queen",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "junkrat",
+        "heroName": "Junkrat",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "juno",
+        "heroName": "Juno",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "kiriko",
+        "heroName": "Kiriko",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "lifeweaver",
+        "heroName": "Lifeweaver",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "lucio",
+        "heroName": "L\u00facio",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "mauga",
+        "heroName": "Mauga",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "mei",
+        "heroName": "Mei",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "mercy",
+        "heroName": "Mercy",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "mizuki",
+        "heroName": "Mizuki",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "moira",
+        "heroName": "Moira",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "orisa",
+        "heroName": "Orisa",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "pharah",
+        "heroName": "Pharah",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "ramattra",
+        "heroName": "Ramattra",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "reaper",
+        "heroName": "Reaper",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "reinhardt",
+        "heroName": "Reinhardt",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "roadhog",
+        "heroName": "Roadhog",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "sierra",
+        "heroName": "Sierra",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "sigma",
+        "heroName": "Sigma",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "sojourn",
+        "heroName": "Sojourn",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "soldier-76",
+        "heroName": "Soldier: 76",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "sombra",
+        "heroName": "Sombra",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "tracer",
+        "heroName": "Tracer",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "vendetta",
+        "heroName": "Vendetta",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "venture",
+        "heroName": "Venture",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "widowmaker",
+        "heroName": "Widowmaker",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "winston",
+        "heroName": "Winston",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "wrecking-ball",
+        "heroName": "Wrecking Ball",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "wuyang",
+        "heroName": "Wuyang",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "zenyatta",
+        "heroName": "Zenyatta",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      }
+    ],
+    "advantages": [
+      {
+        "heroId": "anran",
+        "heroName": "Anran",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "baptiste",
+        "heroName": "Baptiste",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "bastion",
+        "heroName": "Bastion",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "brigitte",
+        "heroName": "Brigitte",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "cassidy",
+        "heroName": "Cassidy",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "domina",
+        "heroName": "Domina",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "doomfist",
+        "heroName": "Doomfist",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "emre",
+        "heroName": "Emre",
+        "matchedTraits": [
+          "lifesteal"
+        ]
+      },
+      {
+        "heroId": "genji",
+        "heroName": "Genji",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "illari",
+        "heroName": "Illari",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "jetpack-cat",
+        "heroName": "Jetpack Cat",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "junker-queen",
+        "heroName": "Junker Queen",
+        "matchedTraits": [
+          "self-heal",
+          "lifesteal"
+        ]
+      },
+      {
+        "heroId": "juno",
+        "heroName": "Juno",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "kiriko",
+        "heroName": "Kiriko",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "lifeweaver",
+        "heroName": "Lifeweaver",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "lucio",
+        "heroName": "L\u00facio",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "mauga",
+        "heroName": "Mauga",
+        "matchedTraits": [
+          "self-heal",
+          "lifesteal"
+        ]
+      },
+      {
+        "heroId": "mei",
+        "heroName": "Mei",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "mercy",
+        "heroName": "Mercy",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "mizuki",
+        "heroName": "Mizuki",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "moira",
+        "heroName": "Moira",
+        "matchedTraits": [
+          "self-heal",
+          "lifesteal"
+        ]
+      },
+      {
+        "heroId": "reaper",
+        "heroName": "Reaper",
+        "matchedTraits": [
+          "lifesteal"
+        ]
+      },
+      {
+        "heroId": "roadhog",
+        "heroName": "Roadhog",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "soldier-76",
+        "heroName": "Soldier: 76",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "torbjorn",
+        "heroName": "Torbj\u00f6rn",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "tracer",
+        "heroName": "Tracer",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "vendetta",
+        "heroName": "Vendetta",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "wrecking-ball",
+        "heroName": "Wrecking Ball",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "wuyang",
+        "heroName": "Wuyang",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "zarya",
+        "heroName": "Zarya",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      },
+      {
+        "heroId": "zenyatta",
+        "heroName": "Zenyatta",
+        "matchedTraits": [
+          "self-heal"
+        ]
+      }
+    ],
+    "htmlContent": "<h2>Core Playbook</h2>\n<p>Ana holds a safe angle and lands Biotic Rifle shots to heal allies or chip enemy health, saving Sleep Dart to stop a dive or Biotic Grenade to shut down enemy sustain before a big fight.</p>\n<h2>Tactical Caveats</h2>\n<p>Her kit is entirely projectile-based with travel time, so heroes who close distance quickly can pressure her before she gets a chance to use her utility at all.</p>"
+  }
+}

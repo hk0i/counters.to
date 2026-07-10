@@ -1,0 +1,63 @@
+{
+  "data": {
+    "roles": [
+      "tank",
+      "damage",
+      "support"
+    ],
+    "damageTypes": [
+      "hitscan",
+      "projectile",
+      "beam",
+      "melee",
+      "shotgun",
+      "explosive",
+      "flame"
+    ],
+    "mechanics": [
+      "barrier",
+      "deployable",
+      "projectile-eating",
+      "crowd-control",
+      "cleanse",
+      "mobility-tool",
+      "self-heal",
+      "resurrection",
+      "invisibility",
+      "hook",
+      "immunity",
+      "anti-heal",
+      "lifesteal",
+      "burn",
+      "knockback",
+      "reveal",
+      "teleport",
+      "flight",
+      "pierce",
+      "silence"
+    ],
+    "strategy": {
+      "archetypes": [
+        "dive",
+        "brawl",
+        "poke",
+        "backline"
+      ],
+      "tags": [
+        "anti-dive",
+        "flanker",
+        "shield-breaker",
+        "bodyguard",
+        "zone-control",
+        "disruptor",
+        "duelist",
+        "pick-potential",
+        "sustain",
+        "burst",
+        "peel",
+        "enabler",
+        "area-denial"
+      ]
+    }
+  }
+}
