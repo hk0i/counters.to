@@ -2,6 +2,7 @@
 id: mei
 name: Mei
 role: damage
+patchVersion: '2026-07-10'
 damageTypes:
 - beam
 mechanics:

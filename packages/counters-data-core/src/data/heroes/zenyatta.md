@@ -2,6 +2,7 @@
 id: zenyatta
 name: Zenyatta
 role: support
+patchVersion: '2026-07-10'
 damageTypes:
 - projectile
 mechanics:

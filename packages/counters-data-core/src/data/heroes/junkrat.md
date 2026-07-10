@@ -2,6 +2,7 @@
 id: junkrat
 name: Junkrat
 role: damage
+patchVersion: '2026-07-10'
 damageTypes:
 - explosive
 mechanics:

@@ -2,6 +2,7 @@
 id: soldier-76
 name: 'Soldier: 76'
 role: damage
+patchVersion: '2026-07-10'
 damageTypes:
 - hitscan
 - explosive

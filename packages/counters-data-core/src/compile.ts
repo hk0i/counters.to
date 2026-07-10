@@ -38,6 +38,9 @@ interface HeroFrontMatter {
   id: string;
   name: string;
   role: string;
+  /** Public game patch/season this profile was last verified against, or an
+   * ISO 8601 authored-on date when no public patch identifier is available. */
+  patchVersion: string;
   damageTypes: string[];
   mechanics: string[];
   strategy: {
@@ -194,6 +197,7 @@ function main(): void {
       id: h.id,
       name: h.name,
       role: h.role,
+      patchVersion: h.patchVersion,
       damageTypes: h.damageTypes,
       mechanics: h.mechanics,
       strategy: h.strategy,

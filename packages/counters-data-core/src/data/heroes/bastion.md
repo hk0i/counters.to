@@ -2,6 +2,7 @@
 id: bastion
 name: Bastion
 role: damage
+patchVersion: '2026-07-10'
 damageTypes:
 - hitscan
 - explosive

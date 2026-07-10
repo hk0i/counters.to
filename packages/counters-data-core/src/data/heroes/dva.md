@@ -2,6 +2,7 @@
 id: dva
 name: D.Va
 role: tank
+patchVersion: '2026-07-10'
 damageTypes:
 - projectile
 mechanics:

@@ -2,6 +2,7 @@
 id: domina
 name: Domina
 role: tank
+patchVersion: '2026-07-10'
 damageTypes:
 - beam
 mechanics:

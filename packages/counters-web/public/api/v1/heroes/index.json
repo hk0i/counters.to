@@ -4,6 +4,7 @@
       "id": "ana",
       "name": "Ana",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -24,6 +25,7 @@
       "id": "anran",
       "name": "Anran",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "flame",
         "projectile"
@@ -45,6 +47,7 @@
       "id": "ashe",
       "name": "Ashe",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan",
         "explosive"
@@ -65,6 +68,7 @@
       "id": "baptiste",
       "name": "Baptiste",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile",
         "hitscan"
@@ -86,6 +90,7 @@
       "id": "bastion",
       "name": "Bastion",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan",
         "explosive"
@@ -106,6 +111,7 @@
       "id": "brigitte",
       "name": "Brigitte",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "melee",
         "projectile"
@@ -127,6 +133,7 @@
       "id": "cassidy",
       "name": "Cassidy",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan"
       ],
@@ -147,6 +154,7 @@
       "id": "dva",
       "name": "D.Va",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -167,6 +175,7 @@
       "id": "domina",
       "name": "Domina",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "beam"
       ],
@@ -188,6 +197,7 @@
       "id": "doomfist",
       "name": "Doomfist",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "shotgun",
         "melee"
@@ -210,6 +220,7 @@
       "id": "echo",
       "name": "Echo",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan",
         "explosive"
@@ -230,6 +241,7 @@
       "id": "emre",
       "name": "Emre",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan",
         "explosive"
@@ -251,6 +263,7 @@
       "id": "freja",
       "name": "Freja",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile",
         "explosive"
@@ -271,6 +284,7 @@
       "id": "genji",
       "name": "Genji",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile",
         "melee"
@@ -292,6 +306,7 @@
       "id": "hanzo",
       "name": "Hanzo",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -311,6 +326,7 @@
       "id": "hazard",
       "name": "Hazard",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "shotgun"
       ],
@@ -331,6 +347,7 @@
       "id": "illari",
       "name": "Illari",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan"
       ],
@@ -351,6 +368,7 @@
       "id": "jetpack-cat",
       "name": "Jetpack Cat",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -371,6 +389,7 @@
       "id": "junker-queen",
       "name": "Junker Queen",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "melee",
         "projectile"
@@ -392,6 +411,7 @@
       "id": "junkrat",
       "name": "Junkrat",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "explosive"
       ],
@@ -411,6 +431,7 @@
       "id": "juno",
       "name": "Juno",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -431,6 +452,7 @@
       "id": "kiriko",
       "name": "Kiriko",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -453,6 +475,7 @@
       "id": "lifeweaver",
       "name": "Lifeweaver",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -474,6 +497,7 @@
       "id": "lucio",
       "name": "L\u00facio",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -494,6 +518,7 @@
       "id": "mauga",
       "name": "Mauga",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan"
       ],
@@ -515,6 +540,7 @@
       "id": "mei",
       "name": "Mei",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "beam"
       ],
@@ -536,6 +562,7 @@
       "id": "mercy",
       "name": "Mercy",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "beam"
       ],
@@ -556,6 +583,7 @@
       "id": "mizuki",
       "name": "Mizuki",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -576,6 +604,7 @@
       "id": "moira",
       "name": "Moira",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "beam",
         "projectile"
@@ -597,6 +626,7 @@
       "id": "orisa",
       "name": "Orisa",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -618,6 +648,7 @@
       "id": "pharah",
       "name": "Pharah",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "explosive"
       ],
@@ -637,6 +668,7 @@
       "id": "ramattra",
       "name": "Ramattra",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "beam",
         "melee"
@@ -658,6 +690,7 @@
       "id": "reaper",
       "name": "Reaper",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "shotgun"
       ],
@@ -678,6 +711,7 @@
       "id": "reinhardt",
       "name": "Reinhardt",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "melee"
       ],
@@ -698,6 +732,7 @@
       "id": "roadhog",
       "name": "Roadhog",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "shotgun",
         "hitscan"
@@ -719,6 +754,7 @@
       "id": "sierra",
       "name": "Sierra",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan"
       ],
@@ -739,6 +775,7 @@
       "id": "sigma",
       "name": "Sigma",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -759,6 +796,7 @@
       "id": "sojourn",
       "name": "Sojourn",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan",
         "projectile"
@@ -779,6 +817,7 @@
       "id": "soldier-76",
       "name": "Soldier: 76",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan",
         "explosive"
@@ -799,6 +838,7 @@
       "id": "sombra",
       "name": "Sombra",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan"
       ],
@@ -820,6 +860,7 @@
       "id": "symmetra",
       "name": "Symmetra",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "beam"
       ],
@@ -840,6 +881,7 @@
       "id": "torbjorn",
       "name": "Torbj\u00f6rn",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile",
         "shotgun"
@@ -860,6 +902,7 @@
       "id": "tracer",
       "name": "Tracer",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan"
       ],
@@ -879,6 +922,7 @@
       "id": "vendetta",
       "name": "Vendetta",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "melee",
         "projectile"
@@ -899,6 +943,7 @@
       "id": "venture",
       "name": "Venture",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "explosive",
         "melee"
@@ -919,6 +964,7 @@
       "id": "widowmaker",
       "name": "Widowmaker",
       "role": "damage",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "hitscan"
       ],
@@ -938,6 +984,7 @@
       "id": "winston",
       "name": "Winston",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "beam",
         "melee"
@@ -958,6 +1005,7 @@
       "id": "wrecking-ball",
       "name": "Wrecking Ball",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "explosive"
       ],
@@ -978,6 +1026,7 @@
       "id": "wuyang",
       "name": "Wuyang",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],
@@ -998,6 +1047,7 @@
       "id": "zarya",
       "name": "Zarya",
       "role": "tank",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "beam"
       ],
@@ -1017,6 +1067,7 @@
       "id": "zenyatta",
       "name": "Zenyatta",
       "role": "support",
+      "patchVersion": "2026-07-10",
       "damageTypes": [
         "projectile"
       ],

@@ -2,6 +2,7 @@
 id: mauga
 name: Mauga
 role: tank
+patchVersion: '2026-07-10'
 damageTypes:
 - hitscan
 mechanics:

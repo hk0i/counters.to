@@ -2,6 +2,7 @@
 id: vendetta
 name: Vendetta
 role: damage
+patchVersion: '2026-07-10'
 damageTypes:
 - melee
 - projectile

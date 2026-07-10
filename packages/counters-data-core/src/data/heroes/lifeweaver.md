@@ -2,6 +2,7 @@
 id: lifeweaver
 name: Lifeweaver
 role: support
+patchVersion: '2026-07-10'
 damageTypes:
 - projectile
 mechanics:

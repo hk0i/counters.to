@@ -2,6 +2,7 @@
 id: pharah
 name: Pharah
 role: damage
+patchVersion: '2026-07-10'
 damageTypes:
 - explosive
 mechanics:

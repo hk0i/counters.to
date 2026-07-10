@@ -2,6 +2,7 @@
 id: sierra
 name: Sierra
 role: damage
+patchVersion: '2026-07-10'
 damageTypes:
 - hitscan
 mechanics:

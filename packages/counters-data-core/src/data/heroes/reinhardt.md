@@ -2,6 +2,7 @@
 id: reinhardt
 name: Reinhardt
 role: tank
+patchVersion: '2026-07-10'
 damageTypes:
 - melee
 mechanics:

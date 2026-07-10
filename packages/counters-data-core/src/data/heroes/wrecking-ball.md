@@ -2,6 +2,7 @@
 id: wrecking-ball
 name: Wrecking Ball
 role: tank
+patchVersion: '2026-07-10'
 damageTypes:
 - explosive
 mechanics:

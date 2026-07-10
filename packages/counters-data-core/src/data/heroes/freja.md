@@ -2,6 +2,7 @@
 id: freja
 name: Freja
 role: damage
+patchVersion: '2026-07-10'
 damageTypes:
 - projectile
 - explosive

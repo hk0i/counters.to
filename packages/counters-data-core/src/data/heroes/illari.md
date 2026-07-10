@@ -2,6 +2,7 @@
 id: illari
 name: Illari
 role: support
+patchVersion: '2026-07-10'
 damageTypes:
 - hitscan
 mechanics:

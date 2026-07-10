@@ -2,6 +2,7 @@
 id: hazard
 name: Hazard
 role: tank
+patchVersion: '2026-07-10'
 damageTypes:
 - shotgun
 mechanics:

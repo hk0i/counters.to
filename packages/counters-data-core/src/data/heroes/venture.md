@@ -2,6 +2,7 @@
 id: venture
 name: Venture
 role: damage
+patchVersion: '2026-07-10'
 damageTypes:
 - explosive
 - melee
