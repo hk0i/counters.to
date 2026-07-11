@@ -227,7 +227,46 @@ Whether the compiled `static/api/v1/**` JSON stays committed to git after CI doe
 
 ## 10. Visual / Design System
 
-A Figma design system exists (as of this revision) — not yet reviewed. Once shared, this section should be filled in with: color/type tokens, component-to-`src/lib/components` mapping, and any deviations this spec's component list (section 7) needs as a result. Until then, treat section 7's components as structurally right but visually unstyled placeholders.
+Sourced from the linked Figma file (`onebigfunction-library`). The file is a customized version of Figma's default "getting started" team-library template rather than a from-scratch system, so colors and type are clearly systemized but component-level specs (buttons, cards, inputs) aren't fully worked out yet — see gaps below.
+
+### 10.1 Colors
+
+Base 500/700/900 shades come from the Tango Palette (a well-known open color set), with 50–300 interpolated by hand. Six semantic groups plus a black/white pair — `Neutral` uses a finer 9-step scale (50–900 in 100s), the rest use a 5-step scale (50/300/500/700 Main/900):
+
+| Group | 50 | 300 | 500 | 700 (Main) | 900 | Use |
+|---|---|---|---|---|---|---|
+| Neutral | `#F2F8FF` | `#A7CEFF` | `#546880` | `#232B36`¹ | `#12161C`¹ | Backgrounds, separators |
+| Primary | `#FCE2BD` | `#FCC97E` | `#FCAF3E` | `#F57900` | `#CE5C00` | Buttons, primary actions |
+| Secondary | `#FFEDFD` | `#E0BADC` | `#AD7FA8` | `#75507B` | `#5C3566` | Buttons, secondary actions |
+| Success | `#D4FFAB` | `#AFF26D` | `#8AE234` | `#73D216` | `#4E9A06` | Good things |
+| Warning | `#FFF49C` | `#FCED74` | `#FCE94F` | `#EDD400` | `#C4A000` | So-so things, possible issues |
+| Error | `#FFC4C4` | `#FA7575` | `#EF2929` | `#CC0000` | `#A40000` | Bad things, destruction |
+| Key | — | — | — | `#FFFFFF` | `#000000` | Black/white |
+
+¹ Neutral's full scale also includes 100 (`#D9EAFF`), 200 (`#BFDCFF`), 400 (`#7590B2`), 600 (`#333F4E`), 800 (`#12161C`) — omitted from the table above to keep the 5-column layout consistent with the other groups.
+
+### 10.2 Typography
+
+Font: **Rubik** (Google Font). Three weights appear as parallel options in the source file — SemiBold (600), Bold (700), ExtraBold (800) — with no single one marked as the default, so pick one as the implementation default (SemiBold is the reasonable middle choice; Bold/ExtraBold read as emphasis variants) rather than treating all three as equally primary.
+
+| Style | Size |
+|---|---|
+| Display 1 | 96px |
+| Display 2 | 64px |
+| Heading 1 | 48px |
+| Heading 2 | 40px |
+| Heading 3 | 36px |
+| Heading 4 | 32px |
+| Heading 5 | 24px |
+| Heading 6 | 20px |
+
+A separate "Mobile Styles" frame in the same file has its own scale loosely based on Apple HIG (Large Title / Title 1-3 / Headline / Body / Callout / Subheading / Footnote / Caption 1-2) — not pulled into this table since V1 doesn't have a defined mobile breakpoint strategy yet; revisit alongside responsive layout work.
+
+### 10.3 Gaps
+
+- No component-level specs extracted yet. The file has a "Primary Button" frame (Small/Medium/Large/Jumbo sizes × Default/Hover/Active states, with separate Mobile variants) that should inform `HeroCard`/`TeamSlotPicker` styling once implementation starts.
+- No spacing or corner-radius scale found as explicit tokens — colors and type are the only clearly systemized parts of this file.
+- Source file itself is partial by its own admission — treat the above as the real starting point, not a finished system, and expect to fill gaps (spacing, component states, dark mode if wanted) during implementation rather than up front.
 
 ## 11. Licensing & Attribution
 
