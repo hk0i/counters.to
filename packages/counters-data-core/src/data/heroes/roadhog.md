@@ -2,7 +2,7 @@
 id: roadhog
 name: Roadhog
 role: tank
-patchVersion: '2026-07-10'
+lastUpdated: 2026-07-10
 damageTypes:
 - shotgun
 - hitscan

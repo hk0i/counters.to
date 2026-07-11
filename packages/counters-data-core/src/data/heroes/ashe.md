@@ -2,7 +2,7 @@
 id: ashe
 name: Ashe
 role: damage
-patchVersion: '2026-07-10'
+lastUpdated: 2026-07-10
 damageTypes:
 - hitscan
 - explosive

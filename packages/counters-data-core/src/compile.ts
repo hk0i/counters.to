@@ -38,9 +38,11 @@ interface HeroFrontMatter {
   id: string;
   name: string;
   role: string;
-  /** Public game patch/season this profile was last verified against, or an
-   * ISO 8601 authored-on date when no public patch identifier is available. */
-  patchVersion: string;
+  /** Content-authorship timestamp for this profile. gray-matter/js-yaml parse
+   * an unquoted YAML timestamp scalar (e.g. `lastUpdated: 2026-07-10`) into a
+   * native Date automatically. Distinct from `patchVersion` (not yet tracked)
+   * which will record the actual game patch/season a hero's kit reflects. */
+  lastUpdated: Date;
   damageTypes: string[];
   mechanics: string[];
   strategy: {
@@ -197,7 +199,9 @@ function main(): void {
       id: h.id,
       name: h.name,
       role: h.role,
-      patchVersion: h.patchVersion,
+      // Serializes to an ISO-8601 string via Date.prototype.toJSON — JSON has
+      // no native date type, so this is the standard wire representation.
+      lastUpdated: h.lastUpdated,
       damageTypes: h.damageTypes,
       mechanics: h.mechanics,
       strategy: h.strategy,

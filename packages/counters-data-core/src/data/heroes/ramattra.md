@@ -2,7 +2,7 @@
 id: ramattra
 name: Ramattra
 role: tank
-patchVersion: '2026-07-10'
+lastUpdated: 2026-07-10
 damageTypes:
 - beam
 - melee

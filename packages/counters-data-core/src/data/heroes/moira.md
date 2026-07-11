@@ -2,7 +2,7 @@
 id: moira
 name: Moira
 role: support
-patchVersion: '2026-07-10'
+lastUpdated: 2026-07-10
 damageTypes:
 - beam
 - projectile

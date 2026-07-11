@@ -2,7 +2,7 @@
 id: junker-queen
 name: Junker Queen
 role: tank
-patchVersion: '2026-07-10'
+lastUpdated: 2026-07-10
 damageTypes:
 - melee
 - projectile

@@ -2,7 +2,7 @@
 id: brigitte
 name: Brigitte
 role: support
-patchVersion: '2026-07-10'
+lastUpdated: 2026-07-10
 damageTypes:
 - melee
 - projectile

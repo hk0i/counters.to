@@ -2,7 +2,7 @@
 id: sombra
 name: Sombra
 role: damage
-patchVersion: '2026-07-10'
+lastUpdated: 2026-07-10
 damageTypes:
 - hitscan
 mechanics:

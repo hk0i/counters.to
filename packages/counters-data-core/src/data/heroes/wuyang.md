@@ -2,7 +2,7 @@
 id: wuyang
 name: Wuyang
 role: support
-patchVersion: '2026-07-10'
+lastUpdated: 2026-07-10
 damageTypes:
 - projectile
 mechanics:

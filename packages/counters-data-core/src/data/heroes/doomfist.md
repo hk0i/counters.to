@@ -2,7 +2,7 @@
 id: doomfist
 name: Doomfist
 role: tank
-patchVersion: '2026-07-10'
+lastUpdated: 2026-07-10
 damageTypes:
 - shotgun
 - melee
