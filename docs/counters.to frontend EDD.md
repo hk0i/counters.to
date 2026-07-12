@@ -43,6 +43,10 @@ Svelte 5 runes are built into the compiler, not a library choice — `$state`/`$
 
 ## 3. Directory Structure Blueprint
 
+### 3.1 Organization principle
+
+Default to colocating a component or state module inside the route that owns it. SvelteKit ignores any file or directory under `routes/` prefixed with `_`, which gives a clean, router-safe place for scenario-scoped code that isn't itself a route. Promote something to `src/lib/` only once a second, genuinely unrelated scenario actually needs it — not preemptively. This keeps each feature area (hero detail, the home/counter-finder flow, the V3 team-builder) navigable and deletable as a self-contained unit, while `src/lib/` stays limited to what's actually shared.
+
 ```
 packages/counters-web/
 ├── static/                        # SvelteKit's equivalent of Vue's public/ — copied to build output as-is
@@ -51,32 +55,37 @@ packages/counters-web/
 ├── src/
 │   ├── app.html
 │   ├── routes/
-│   │   ├── +layout.svelte         # global layout, mounts OfflineBanner
-│   │   ├── +page.svelte           # "/" — MVP: static hero grid. V2: same route gains interactive multi-select.
-│   │   ├── +page.ts               # load function: heroes/index.json
+│   │   ├── +layout.svelte              # global layout, mounts lib/components/OfflineBanner.svelte
+│   │   ├── +page.svelte                # "/" — MVP: static hero grid. V2: same route gains interactive multi-select.
+│   │   ├── +page.ts                    # load function: heroes/index.json
+│   │   ├── _components/                # scenario: home / counter-finder — used only here
+│   │   │   ├── RoleFilterBar.svelte        # [MVP]
+│   │   │   ├── ThreatSummaryPanel.svelte   # [V2]
+│   │   │   └── GriefNoticePanel.svelte     # [V2]
+│   │   ├── _state/
+│   │   │   └── heroSelection.svelte.ts     # [V2] Set-based allied/enemy selection (section 6.2), scoped to this scenario
 │   │   ├── heroes/
 │   │   │   └── [id]/
-│   │   │       ├── +page.svelte   # [MVP] single-hero weakTo + threats detail
-│   │   │       └── +page.ts       # load fn + `entries()` export enumerating all 51 hero ids for prerendering
-│   │   ├── team-builder/          # [V3 — reconsider after V2] role-locked, scored
-│   │   │   └── +page.svelte
+│   │   │       ├── +page.svelte        # [MVP] single-hero weakTo + threats detail
+│   │   │       └── +page.ts            # load fn + `entries()` export enumerating all 51 hero ids for prerendering
+│   │   ├── team-builder/               # [V3 — reconsider after V2] self-contained scenario
+│   │   │   ├── +page.svelte
+│   │   │   ├── _components/
+│   │   │   │   └── TeamSlotPicker.svelte   # only used here
+│   │   │   └── _state/
+│   │   │       └── teamBuilder.svelte.ts   # role-locked slots, 5v5/6v6 mode toggle, scoring
 │   │   └── about/
-│   │       └── +page.svelte       # [MVP]
+│   │       └── +page.svelte            # [MVP]
 │   ├── lib/
-│   │   ├── components/
-│   │   │   ├── HeroCard.svelte            # [MVP]
-│   │   │   ├── RoleFilterBar.svelte       # [MVP]
-│   │   │   ├── ThreatSummaryPanel.svelte  # [V2]
-│   │   │   ├── GriefNoticePanel.svelte    # [V2]
-│   │   │   ├── CounterSuggestionsPanel.svelte  # [V2], reused/extended by [V3]
-│   │   │   ├── TeamSlotPicker.svelte      # [V3]
-│   │   │   ├── MatchupBadge.svelte        # [MVP] (hero-detail page), reused in [V2]/[V3]
-│   │   │   └── OfflineBanner.svelte       # [MVP]
-│   │   ├── state/                         # introduced at [V2] — see section 6, nothing needed for MVP
-│   │   │   ├── heroSelection.svelte.ts    # [V2] Set-based allied/enemy selection (see section 6.2)
-│   │   │   └── onlineStatus.svelte.ts     # [MVP]
+│   │   ├── components/                     # only things used by 2+ scenarios
+│   │   │   ├── HeroCard.svelte                 # home grid (MVP/V2) + team-builder slot picker (V3)
+│   │   │   ├── MatchupBadge.svelte             # hero-detail (MVP) + home panels (V2)
+│   │   │   ├── CounterSuggestionsPanel.svelte  # home (V2) + team-builder (V3, extended)
+│   │   │   └── OfflineBanner.svelte            # global, root layout
+│   │   ├── state/
+│   │   │   └── onlineStatus.svelte.ts      # genuinely global, not scenario-specific
 │   │   └── types/
-│   │       └── api.ts                     # mirrors counters-data-core's compiled JSON shapes
+│   │       └── api.ts                      # shared data contract, mirrors compiled JSON shapes
 ├── Dockerfile                         # local dev / offline testing, see section 8
 ├── vite.config.ts
 ├── svelte.config.js                   # adapter-static config
@@ -123,7 +132,7 @@ Physical path: static/api/v1/matchups/index.json (path per section 9)
 ### 4.4 Fetching & caching contract
 
 - **[MVP]** `src/routes/+page.ts` and `src/routes/heroes/[id]/+page.ts` `load()` functions fetch `heroes/index.json` and `heroes/:id/index.json` respectively — since every route is prerendered (section 9), these fetches happen once at build time, not per-visitor. No client-side fetches at all for MVP.
-- **[V2]** `heroSelection.svelte.ts` (section 6.2) fetches each newly-selected hero's `heroes/:id/index.json` client-side as it's added to either selection set, caching by id for the session so re-selecting doesn't refetch.
+- **[V2]** `routes/_state/heroSelection.svelte.ts` (section 6.2) fetches each newly-selected hero's `heroes/:id/index.json` client-side as it's added to either selection set, caching by id for the session so re-selecting doesn't refetch.
 - **[V3]** would fetch `matchups/index.json` once on first visit to `/team-builder`, if built.
 - All fetches are plain `fetch()` — no data-fetching library needed at this scale (no retries, no pagination, no mutations against a read-only static API).
 
@@ -131,7 +140,7 @@ Physical path: static/api/v1/matchups/index.json (path per section 9)
 
 - **Precache** (install-time, via Workbox `globPatterns`): the prerendered app shell — since every route is static HTML at build time (section 9), this precaches the whole MVP experience by itself, including every hero detail page.
 - **Runtime cache** (`StaleWhileRevalidate`): `/api/v1/**`, covering V2's client-side per-hero fetches (and V3's `matchups` fetch, if built) — serves instantly from cache, refreshes in the background. Appropriate because this data only changes on redeploy (hero balance patches), not in real time.
-- `OfflineBanner.svelte` reads `src/lib/state/onlineStatus.svelte.ts` (wraps `navigator.onLine` + `online`/`offline` events) and shows a small persistent notice when offline — data is still fully usable, just not guaranteed fresh.
+- `lib/components/OfflineBanner.svelte` reads `lib/state/onlineStatus.svelte.ts` (wraps `navigator.onLine` + `online`/`offline` events) and shows a small persistent notice when offline — data is still fully usable, just not guaranteed fresh. Both live in `lib/` since the banner is global (root layout), not scoped to one scenario.
 
 ## 5. Routing / Page Map
 
@@ -152,7 +161,7 @@ The hero-detail route renders `threats` (grouped by `matchedTraits`) directly fr
 
 ### 6.2 V2: multi-select and cross-referencing
 
-State (`heroSelection.svelte.ts`, Svelte 5 runes): two `Set<string>`s, `selectedAllies` and `selectedEnemies`, both uncapped. Modeled as sets (not scalars) from the moment this module is written — there's no MVP version of this state to migrate away from, since MVP doesn't need it at all.
+State (`routes/_state/heroSelection.svelte.ts`, Svelte 5 runes, colocated with the home route per section 3.1 since nothing else needs it): two `Set<string>`s, `selectedAllies` and `selectedEnemies`, both uncapped. Modeled as sets (not scalars) from the moment this module is written — there's no MVP version of this state to migrate away from, since MVP doesn't need it at all.
 
 Logic, as pure functions over already-fetched hero deep-resources (testable independent of components):
 
@@ -172,14 +181,24 @@ Note in nearby copy that suggestions are heuristic, not a guarantee — same cav
 
 ## 7. Component Responsibilities (high level)
 
-- **HeroCard.svelte** `[MVP]` — role icon, name, portrait. MVP: click-through link to detail page. V2: same component gains toggle-select behavior for the interactive grid (additive, not a rewrite).
-- **RoleFilterBar.svelte** `[MVP]` — emits a role filter; the home route owns the filtered list. Pure display-filtering, not selection state.
-- **MatchupBadge.svelte** `[MVP]` — small "threat" / "advantage" chip with matched-trait tooltip. Used on the hero-detail page from MVP onward, reused by V2's panels.
+Per section 3.1, only components used by 2+ scenarios live in `lib/components/`; everything else is colocated with the one route that uses it.
+
+**Shared (`lib/components/`):**
+
+- **HeroCard.svelte** `[MVP]` — role icon, name, portrait. MVP: click-through link to detail page. V2: same component gains toggle-select behavior for the interactive grid (additive, not a rewrite). Shared because both the home scenario and V3's `TeamSlotPicker` render hero cards.
+- **MatchupBadge.svelte** `[MVP]` — small "threat" / "advantage" chip with matched-trait tooltip. Used on the hero-detail page from MVP onward, reused by V2's home panels — two different scenarios, so it's shared.
+- **CounterSuggestionsPanel.svelte** `[V2]` — renders `getCounterSuggestions` output; reused/extended by V3's scored variant if built, so it stays shared rather than colocated with the home scenario alone.
+- **OfflineBanner.svelte** `[MVP]` — global, mounted once in the root `+layout.svelte`, not scoped to any one scenario.
+
+**Colocated with the home / counter-finder scenario (`routes/_components/`):**
+
+- **RoleFilterBar.svelte** `[MVP]` — emits a role filter; the home route owns the filtered list. Pure display-filtering, not selection state. Only used here.
 - **ThreatSummaryPanel.svelte** `[V2]` — renders `getMergedWeaknesses` output (enemy-only case).
 - **GriefNoticePanel.svelte** `[V2]` — renders `getThreatsToTeam` output (both-sides-selected case).
-- **CounterSuggestionsPanel.svelte** `[V2]` — renders `getCounterSuggestions` output; reused/extended by V3's scored variant if built.
-- **TeamSlotPicker.svelte** `[V3]` — 5-or-6 role-locked slots depending on mode toggle.
-- **OfflineBanner.svelte** `[MVP]` — global, mounted once in `+layout.svelte`.
+
+**Colocated with the team-builder scenario (`routes/team-builder/_components/`):**
+
+- **TeamSlotPicker.svelte** `[V3]` — 5-or-6 role-locked slots depending on mode toggle. Nothing else needs this.
 
 Prop-level contracts and full component specs are deferred to implementation — this list exists so the route/component boundary is agreed before code exists, not to fully replace normal PR review.
 
