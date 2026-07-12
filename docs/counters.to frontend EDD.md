@@ -1,15 +1,25 @@
 # Engineering Design Document (EDD)
 
-## Project: Counters.to Web Frontend (V1)
+## Project: Counters.to Web Frontend
 
 **Status:** Draft
 **Architecture:** Static SvelteKit site (`adapter-static`, fully prerendered), consuming the flat-file-compiled REST API from `counters-data-core`
 
 ## 1. Objective & Scope
 
-This specification defines the frontend that consumes the static JSON API produced by `packages/counters-data-core` (see `docs/counters.to backend EDD.md`). It covers stack choice, directory layout, data-fetching and offline strategy, routing/page map, state management, local dev environment, build/deploy to GitHub Pages, and testing. Visual/brand design is covered at a process level only for V1 — see section 10.
+This specification defines the frontend that consumes the static JSON API produced by `packages/counters-data-core` (see `docs/counters.to backend EDD.md`). It covers stack choice, directory layout, data-fetching and offline strategy, routing/page map, state management, local dev environment, build/deploy to GitHub Pages, and testing.
 
 This package is licensed **GPLv3**, separately from `counters-data-core` (MIT). See section 11.
+
+### 1.1 Feature staging
+
+Priority is speed to market without boxing in later features. Three tiers:
+
+- **MVP** — select a single hero, see what mechanics it's weak to and which heroes exploit them. Pure static navigation between prerendered pages, zero client-side state, zero new backend data. Ships on what's already compiled today.
+- **V2** — multi-select both enemy and allied heroes (both uncapped), see merged weaknesses across the enemy selection, plus — once allied heroes are also picked — which selected enemies specifically threaten your current picks ("grief" notices) and suggested counter-picks. Reuses each hero's existing `threats`/`advantages` data client-side; no new backend endpoint. Does need one backend data addition: `distance` and `speed` as mechanics (see section 4.2).
+- **V3 (reconsider after V2 ships)** — role-locked team-builder with scored/ranked suggestions and a 5v5/6v6 slot-count toggle. Needs a new `matchups/index.json` backend endpoint and a scoring algorithm. Likely redundant with what V2 already delivers via the simpler cross-referencing approach — revisit whether it's still worth building once V2 is live and there's real usage to learn from.
+
+Sections below are tagged **[MVP]**, **[V2]**, or **[V3]** where the distinction matters.
 
 ## 2. Stack
 
@@ -17,7 +27,7 @@ This package is licensed **GPLv3**, separately from `counters-data-core` (MIT). 
 - **`@sveltejs/adapter-static`** — prerenders every route to plain HTML/CSS/JS at build time, no server at runtime
 - **`@vite-pwa/sveltekit`** for service worker + manifest generation (same Workbox foundation, same author/ecosystem as the Vue-targeted `vite-plugin-pwa`)
 - No separate router library — file-based routing is built into SvelteKit
-- No external state library — Svelte 5 runes (`$state`, `$derived`) in plain `.svelte.ts` modules cover this app's small shared-state needs (team-builder slots, online status)
+- No external state library — Svelte 5 runes (`$state`, `$derived`) in plain `.svelte.ts` modules cover this app's small shared-state needs, introduced starting at V2 (see section 6)
 
 ### Why SvelteKit over plain Svelte + a router
 
@@ -42,29 +52,31 @@ packages/counters-web/
 │   ├── app.html
 │   ├── routes/
 │   │   ├── +layout.svelte         # global layout, mounts OfflineBanner
-│   │   ├── +page.svelte           # "/" — home hero grid
+│   │   ├── +page.svelte           # "/" — MVP: static hero grid. V2: same route gains interactive multi-select.
 │   │   ├── +page.ts               # load function: heroes/index.json
 │   │   ├── heroes/
 │   │   │   └── [id]/
-│   │   │       ├── +page.svelte
+│   │   │       ├── +page.svelte   # [MVP] single-hero weakTo + threats detail
 │   │   │       └── +page.ts       # load fn + `entries()` export enumerating all 51 hero ids for prerendering
-│   │   ├── team-builder/
+│   │   ├── team-builder/          # [V3 — reconsider after V2] role-locked, scored
 │   │   │   └── +page.svelte
 │   │   └── about/
-│   │       └── +page.svelte
+│   │       └── +page.svelte       # [MVP]
 │   ├── lib/
 │   │   ├── components/
-│   │   │   ├── HeroCard.svelte
-│   │   │   ├── RoleFilterBar.svelte
-│   │   │   ├── TeamSlotPicker.svelte
-│   │   │   ├── CounterSuggestionsPanel.svelte
-│   │   │   ├── MatchupBadge.svelte
-│   │   │   └── OfflineBanner.svelte
-│   │   ├── state/
-│   │   │   ├── teamComp.svelte.ts     # shared enemy-team-slot state (runes)
-│   │   │   └── onlineStatus.svelte.ts
+│   │   │   ├── HeroCard.svelte            # [MVP]
+│   │   │   ├── RoleFilterBar.svelte       # [MVP]
+│   │   │   ├── ThreatSummaryPanel.svelte  # [V2]
+│   │   │   ├── GriefNoticePanel.svelte    # [V2]
+│   │   │   ├── CounterSuggestionsPanel.svelte  # [V2], reused/extended by [V3]
+│   │   │   ├── TeamSlotPicker.svelte      # [V3]
+│   │   │   ├── MatchupBadge.svelte        # [MVP] (hero-detail page), reused in [V2]/[V3]
+│   │   │   └── OfflineBanner.svelte       # [MVP]
+│   │   ├── state/                         # introduced at [V2] — see section 6, nothing needed for MVP
+│   │   │   ├── heroSelection.svelte.ts    # [V2] Set-based allied/enemy selection (see section 6.2)
+│   │   │   └── onlineStatus.svelte.ts     # [MVP]
 │   │   └── types/
-│   │       └── api.ts                 # mirrors counters-data-core's compiled JSON shapes
+│   │       └── api.ts                     # mirrors counters-data-core's compiled JSON shapes
 ├── Dockerfile                         # local dev / offline testing, see section 8
 ├── vite.config.ts
 ├── svelte.config.js                   # adapter-static config
@@ -76,16 +88,26 @@ docker-compose.yml                     # repo root — see section 8
 
 ## 4. Data Layer
 
-### 4.1 New backend dependency: `matchups/index.json`
+### 4.1 MVP: already fully covered
 
-The team-builder view (section 6) needs pairwise matchup data for up to 5 heroes at once. Fetching 5 separate `heroes/:id/index.json` deep resources per lookup works but is wasteful. This spec assumes `counters-data-core` adds one more static endpoint:
+`heroes/index.json` (grid) and `heroes/:id/index.json` (detail, including `threats` and `advantages`) are already compiled and committed today. MVP needs no backend changes at all.
+
+### 4.2 V2 backend dependency: `distance` and `speed` mechanics
+
+The recurring example motivating V2 (dive tanks like Wrecking Ball or Hazard being especially vulnerable to Brigitte's Whip Shot, since it creates separation they need a — possibly already-spent — gap-closer to undo) isn't fully captured by the existing mechanics vocab. `knockback` already exists and covers the immediate hit; `distance` and `speed` are being added as their own mechanics to capture the broader kiting/separation dynamic (sustained range advantage, disengage tools) distinct from a single knockback effect.
+
+This is real data-authoring work, not a one-line schema change: add `distance`/`speed` to `registry.yaml`, then re-author `weakTo`/`strongTo` for the heroes where they actually apply (dive/melee-dependent heroes on the weak side; kiting/poke/disengage-capable heroes on the strong side). Known accepted limitation: this still models kit traits statically, not cooldown/sequencing state (e.g., "already used their gap-closer") — full sequencing modeling is a much bigger change, out of scope here.
+
+No new endpoint needed — V2 still only reads each selected hero's existing `threats`/`advantages` arrays, just with a richer mechanics vocabulary behind them.
+
+### 4.3 V3 backend dependency: `matchups/index.json`
+
+A role-locked scored team-builder needs pairwise matchup data for multiple heroes at once more efficiently than N individual deep fetches. Shape, if built:
 
 ```
 GET /api/v1/matchups
 Physical path: static/api/v1/matchups/index.json (path per section 9)
 ```
-
-A flat structure covering every ordered pair where a relationship exists (both directions checked independently, per the backend's non-reciprocal design — see `CLAUDE.md`):
 
 ```json
 {
@@ -96,56 +118,74 @@ A flat structure covering every ordered pair where a relationship exists (both d
 }
 ```
 
-~2,600 entries at 51 heroes, comfortably one small fetch. **This endpoint doesn't exist yet** — it's a dependency on the data-core package, not something this frontend spec can build alone. Flag it back as a small follow-up task there before starting `TeamBuilderView`.
+~2,600 entries at 51 heroes. **Don't build this until V3 is actually greenlit** — per section 1.1, V2 may make it unnecessary.
 
-### 4.2 Fetching & caching contract
+### 4.4 Fetching & caching contract
 
-- `src/routes/+page.ts` `load()` fetches `/api/v1/heroes/index.json` — since this route is fully prerendered (section 9), the fetch actually happens once at build time, not per-visitor.
-- `src/routes/heroes/[id]/+page.ts` `load()` fetches `/api/v1/heroes/:id/index.json` for that hero; `entries()` in the same file enumerates all 51 ids (reading the local compiled `heroes/index.json` at build time) so every hero page is prerendered too.
-- `useMatchups`-equivalent (`src/lib/state/matchups.svelte.ts`) fetches `/api/v1/matchups/index.json` once client-side on first visit to `/team-builder`, since that page's interactivity (not its shell) is what needs it — no reason to bloat every prerendered page's build-time fetch with data only the team-builder needs.
+- **[MVP]** `src/routes/+page.ts` and `src/routes/heroes/[id]/+page.ts` `load()` functions fetch `heroes/index.json` and `heroes/:id/index.json` respectively — since every route is prerendered (section 9), these fetches happen once at build time, not per-visitor. No client-side fetches at all for MVP.
+- **[V2]** `heroSelection.svelte.ts` (section 6.2) fetches each newly-selected hero's `heroes/:id/index.json` client-side as it's added to either selection set, caching by id for the session so re-selecting doesn't refetch.
+- **[V3]** would fetch `matchups/index.json` once on first visit to `/team-builder`, if built.
 - All fetches are plain `fetch()` — no data-fetching library needed at this scale (no retries, no pagination, no mutations against a read-only static API).
 
-### 4.3 Offline strategy (`@vite-pwa/sveltekit`)
+### 4.5 Offline strategy (`@vite-pwa/sveltekit`)
 
-- **Precache** (install-time, via Workbox `globPatterns`): the prerendered app shell — since every route is static HTML at build time (section 9), this effectively precaches the whole site, including hero detail pages, not just a JS shell.
-- **Runtime cache** (`StaleWhileRevalidate`): `/api/v1/**` still gets this treatment for the team-builder's client-side `matchups` fetch and any post-deploy data changes — serves instantly from cache, refreshes in the background. Appropriate because this data only changes on redeploy (hero balance patches), not in real time.
+- **Precache** (install-time, via Workbox `globPatterns`): the prerendered app shell — since every route is static HTML at build time (section 9), this precaches the whole MVP experience by itself, including every hero detail page.
+- **Runtime cache** (`StaleWhileRevalidate`): `/api/v1/**`, covering V2's client-side per-hero fetches (and V3's `matchups` fetch, if built) — serves instantly from cache, refreshes in the background. Appropriate because this data only changes on redeploy (hero balance patches), not in real time.
 - `OfflineBanner.svelte` reads `src/lib/state/onlineStatus.svelte.ts` (wraps `navigator.onLine` + `online`/`offline` events) and shows a small persistent notice when offline — data is still fully usable, just not guaranteed fresh.
 
 ## 5. Routing / Page Map
 
-| Route (file) | Purpose |
-|---|---|
-| `src/routes/+page.svelte` (`/`) | Hero grid, filterable by role, searchable by name |
-| `src/routes/heroes/[id]/+page.svelte` | Playbook, tactical caveats, threats list, advantages list |
-| `src/routes/team-builder/+page.svelte` | Pick an enemy team (role-locked, up to 1 tank / 2 damage / 2 support), get ranked counter suggestions computed client-side from the matchups fetch |
-| `src/routes/about/+page.svelte` | Project description, license summary, Blizzard IP attribution (section 11) |
+| Route (file) | Stage | Purpose |
+|---|---|---|
+| `src/routes/+page.svelte` (`/`) | MVP → V2 | MVP: static hero grid, filterable by role, searchable by name, links to detail pages. V2: same route gains interactive multi-select (allied + enemy, both uncapped) with inline weakness/threat/suggestion panels. |
+| `src/routes/heroes/[id]/+page.svelte` | MVP | Playbook, tactical caveats, threats list, advantages list for one hero. Stays useful post-V2 as a direct/shareable/SEO-friendly link even once the interactive tool exists. |
+| `src/routes/team-builder/+page.svelte` | V3 (reconsider) | Role-locked (1 tank/2/2 for 5v5, up to 2 tanks/2/2 for 6v6 via a mode toggle), scored counter suggestions from the `matchups` fetch. |
+| `src/routes/about/+page.svelte` | MVP | Project description, license summary, Blizzard IP attribution (section 11). |
 
-Since every route is known and prerendered at build time (all 51 hero ids via `entries()`, plus the 3 static routes), GitHub Pages doesn't need the usual SPA-on-static-hosting `404.html`-redirects-to-`index.html` workaround — every real URL has a real prerendered HTML file already. A genuine `src/routes/+error.svelte` still handles truly nonexistent hero ids (a real 404, not a routing hack).
+Since every route is known and prerendered at build time (all 51 hero ids via `entries()`, plus the static routes), GitHub Pages doesn't need the usual SPA-on-static-hosting `404.html`-redirects-to-`index.html` workaround — every real URL has a real prerendered HTML file already. A genuine `src/routes/+error.svelte` still handles truly nonexistent hero ids (a real 404, not a routing hack).
 
-## 6. Team-Builder Aggregation Logic
+## 6. Feature Logic by Stage
 
-Client-side, no backend involvement beyond the `matchups` fetch:
+### 6.1 MVP: no logic
 
-1. User fills up to 5 enemy team slots (role-locked to mirror the 1-2-2 structure).
+The hero-detail route renders `threats` (grouped by `matchedTraits`) directly from the already-compiled JSON. No aggregation, no client-side computation — this is why MVP needs no state module at all (section 3).
+
+### 6.2 V2: multi-select and cross-referencing
+
+State (`heroSelection.svelte.ts`, Svelte 5 runes): two `Set<string>`s, `selectedAllies` and `selectedEnemies`, both uncapped. Modeled as sets (not scalars) from the moment this module is written — there's no MVP version of this state to migrate away from, since MVP doesn't need it at all.
+
+Logic, as pure functions over already-fetched hero deep-resources (testable independent of components):
+
+1. **Enemy-only selected** — `getMergedWeaknesses(enemies)`: union of `weakTo`-driven `threats` across all selected enemies, grouped by mechanic, each with the heroes that exploit it. General "who's good against this comp."
+2. **Both allied and enemy selected** — `getThreatsToTeam(allies, enemies)`: for each allied hero, filter its own `threats` array down to just the currently-selected enemies — surfaces which specific enemy picks threaten your specific picks, not a generic warning.
+3. **Counter-pick suggestions** — `getCounterSuggestions(allies, enemies)`: heroes not already in `selectedAllies` whose `strongTo` overlaps the mechanics identified in step 2 (or step 1's merged weaknesses if no allies are selected yet).
+
+No backend involvement beyond fetching each selected hero's already-existing deep resource (section 4.4) plus the `distance`/`speed` data work (section 4.2). No scoring/ranking — these are direct trait-overlap lookups, not a weighted algorithm.
+
+### 6.3 V3: scored team-builder (if built)
+
+1. User fills up to 5 (5v5) or up to 6 with max 2 tanks (6v6, via mode toggle) enemy team slots, role-locked.
 2. For each candidate hero not on the enemy team, sum matched-trait counts where the candidate's `advantageOver` hits an enemy slot, minus counts where the candidate would be threatened by an enemy slot.
-3. Sort candidates by that score, descending, grouped by role for the suggestion panel.
+3. Sort candidates by that score, descending, grouped by role.
 
-This is intentionally simple (a weighted sum, not a real matchmaking algorithm) — good enough for V1 and easy to reason about. Note in `about/+page.svelte` or nearby copy that suggestions are heuristic, not a guarantee.
+Note in nearby copy that suggestions are heuristic, not a guarantee — same caveat as V2's suggestions, more load-bearing here since this view implies more precision via the scoring.
 
 ## 7. Component Responsibilities (high level)
 
-- **HeroCard.svelte** — role icon, name, click-through to detail. No fetching, pure props.
-- **RoleFilterBar.svelte** — emits a role filter; the home route owns the filtered list.
-- **TeamSlotPicker.svelte** — 5 role-locked slots, hero picker per slot (reuses `HeroCard` in a compact mode).
-- **CounterSuggestionsPanel.svelte** — renders the ranked output of section 6's aggregation.
-- **MatchupBadge.svelte** — small "threat" / "advantage" chip with matched-trait tooltip, reused on the hero-detail route and `CounterSuggestionsPanel`.
-- **OfflineBanner.svelte** — global, mounted once in `+layout.svelte`.
+- **HeroCard.svelte** `[MVP]` — role icon, name, portrait. MVP: click-through link to detail page. V2: same component gains toggle-select behavior for the interactive grid (additive, not a rewrite).
+- **RoleFilterBar.svelte** `[MVP]` — emits a role filter; the home route owns the filtered list. Pure display-filtering, not selection state.
+- **MatchupBadge.svelte** `[MVP]` — small "threat" / "advantage" chip with matched-trait tooltip. Used on the hero-detail page from MVP onward, reused by V2's panels.
+- **ThreatSummaryPanel.svelte** `[V2]` — renders `getMergedWeaknesses` output (enemy-only case).
+- **GriefNoticePanel.svelte** `[V2]` — renders `getThreatsToTeam` output (both-sides-selected case).
+- **CounterSuggestionsPanel.svelte** `[V2]` — renders `getCounterSuggestions` output; reused/extended by V3's scored variant if built.
+- **TeamSlotPicker.svelte** `[V3]` — 5-or-6 role-locked slots depending on mode toggle.
+- **OfflineBanner.svelte** `[MVP]` — global, mounted once in `+layout.svelte`.
 
 Prop-level contracts and full component specs are deferred to implementation — this list exists so the route/component boundary is agreed before code exists, not to fully replace normal PR review.
 
 ## 8. Local Development Environment
 
-Goal: serve the built site locally over a real hostname (not `localhost:5173`) so PWA/offline behavior can be tested against something that behaves like the eventual `counters.to` production domain — service worker scope, cache behavior, and manifest start-url all depend on origin, so testing against a real-ish origin catches issues `vite dev` won't.
+Goal: serve the built site locally over a real hostname (not `localhost:5173`) so PWA/offline behavior can be tested against something that behaves like the eventual `counters.to` production domain — service worker scope, cache behavior, and manifest start-url all depend on origin, so testing against a real-ish origin catches issues `vite dev` won't. Relevant starting at MVP, since offline precaching of the prerendered app shell is already meaningful before any V2 interactivity exists.
 
 ### Why `to.counters.localhost`
 
@@ -208,7 +248,7 @@ nginx-proxy auto-detects the single `EXPOSE 80` — no `VIRTUAL_PORT` needed unl
 
 ### ⚠ Follow-up needed in `counters-data-core`
 
-`compile.ts` currently writes to `packages/counters-web/public/api/v1/...` (Vue/Vite convention). SvelteKit's static-copy directory is `static/`, not `public/`. Before this spec can actually be implemented, `compile.ts`'s `OUT_ROOT` needs to change from `counters-web/public/api/v1` to `counters-web/static/api/v1`. This is a one-line change in a committed file — small atomic commit of its own, don't bundle it into unrelated frontend work.
+`compile.ts` currently writes to `packages/counters-web/public/api/v1/...` (Vue/Vite convention). SvelteKit's static-copy directory is `static/`, not `public/`. Before **MVP** can build, `compile.ts`'s `OUT_ROOT` needs to change from `counters-web/public/api/v1` to `counters-web/static/api/v1`. This is a one-line change in a committed file — small atomic commit of its own, don't bundle it into unrelated frontend work. This blocks MVP, not just V2/V3.
 
 ### Custom domain assumption
 
@@ -220,10 +260,10 @@ This closes the "no CI/deploy trigger" gap flagged in the backend EDD review. On
 
 1. Checkout, setup Node, `npm ci` (workspace root).
 2. `npm run compile --workspace=counters-data-core` — regenerate `static/api/v1/**` from the current hero `.md` source, so the deployed site always reflects the latest committed hero data rather than a possibly-stale committed JSON snapshot.
-3. `npm run build --workspace=counters-web` — SvelteKit build via `adapter-static`; this both copies `static/` into the output and prerenders every route (all 51 hero pages plus the 3 static routes) to real HTML.
+3. `npm run build --workspace=counters-web` — SvelteKit build via `adapter-static`; this both copies `static/` into the output and prerenders every route (all 51 hero pages plus the static routes) to real HTML.
 4. Upload the adapter-static output directory as a Pages artifact, deploy via `actions/deploy-pages`.
 
-Whether the compiled `static/api/v1/**` JSON stays committed to git after CI does this for every deploy is a separate question worth revisiting — it's currently committed so the repo is inspectable/diffable without running the pipeline, but CI regenerating it on every deploy makes the committed copy closer to a convenience snapshot than a build artifact.
+This pipeline doesn't change between MVP/V2/V3 — the same build steps apply regardless of which features are live. Whether the compiled `static/api/v1/**` JSON stays committed to git after CI does this for every deploy is a separate question worth revisiting — it's currently committed so the repo is inspectable/diffable without running the pipeline, but CI regenerating it on every deploy makes the committed copy closer to a convenience snapshot than a build artifact.
 
 ## 10. Visual / Design System
 
@@ -247,7 +287,7 @@ Base 500/700/900 shades come from the Tango Palette (a well-known open color set
 
 ### 10.2 Typography
 
-Font: **Rubik** (Google Font). Three weights appear as parallel options in the source file — SemiBold (600), Bold (700), ExtraBold (800) — with no single one marked as the default, so pick one as the implementation default (SemiBold is the reasonable middle choice; Bold/ExtraBold read as emphasis variants) rather than treating all three as equally primary.
+Font: **Rubik** (Google Font, SIL Open Font License 1.1 — permissive, fine to bundle/embed independent of this project's own GPL/MIT choices). Three weights appear as parallel options in the source file — SemiBold (600), Bold (700), ExtraBold (800) — with no single one marked as the default, so pick one as the implementation default (SemiBold is the reasonable middle choice; Bold/ExtraBold read as emphasis variants) rather than treating all three as equally primary.
 
 | Style | Size |
 |---|---|
@@ -262,9 +302,13 @@ Font: **Rubik** (Google Font). Three weights appear as parallel options in the s
 
 A separate "Mobile Styles" frame in the same file has its own scale loosely based on Apple HIG (Large Title / Title 1-3 / Headline / Body / Callout / Subheading / Footnote / Caption 1-2) — not pulled into this table since V1 doesn't have a defined mobile breakpoint strategy yet; revisit alongside responsive layout work.
 
-### 10.3 Gaps
+### 10.3 Portrait art — unresolved, blocks MVP
 
-- No component-level specs extracted yet. The file has a "Primary Button" frame (Small/Medium/Large/Jumbo sizes × Default/Hover/Active states, with separate Mobile variants) that should inform `HeroCard`/`TeamSlotPicker` styling once implementation starts.
+MVP's core interaction is selecting a hero by its portrait, so this isn't a cosmetic gap — it's a blocking one. Using Blizzard's actual hero art directly carries real IP risk for a fan project: a search for an explicit Blizzard fan-content-use policy (comparable to what some other game companies publish) didn't turn up a clear grant — what exists covers fan art *submitted to* Blizzard, a different thing, plus general "no licensing without a formal agreement" language. Default plan until this is resolved: custom or community-licensed icons rather than official art, consistent with the unofficial-fan-project stance already in the licensing plan (section 11). Worth a direct check of blizzard.com/en-us/legal, or real legal advice, before committing to using official art.
+
+### 10.4 Other gaps
+
+- No component-level specs extracted yet. The file has a "Primary Button" frame (Small/Medium/Large/Jumbo sizes × Default/Hover/Active states, with separate Mobile variants) that should inform `HeroCard` styling once implementation starts.
 - No spacing or corner-radius scale found as explicit tokens — colors and type are the only clearly systemized parts of this file.
 - Source file itself is partial by its own admission — treat the above as the real starting point, not a finished system, and expect to fill gaps (spacing, component states, dark mode if wanted) during implementation rather than up front.
 
@@ -273,18 +317,21 @@ A separate "Mobile Styles" frame in the same file has its own scale loosely base
 - `packages/counters-web` → **GPLv3** (per-package `LICENSE` file + `package.json` `license` field — not yet scaffolded, tracked in `CLAUDE.md`).
 - Depends on `counters-data-core` (MIT) for types/data shape reference only — no code-sharing concern there since MIT can be freely consumed by a GPL package (just not the reverse).
 - The `about` route should carry the Blizzard Entertainment IP disclaimer (unofficial fan project, not affiliated with or endorsed by Blizzard) in addition to the root `NOTICE.md` — the in-app footer/about page is the more visible surface for end users who'll never see the repo.
+- The design system's color/type *values* (as opposed to the Figma source file) are just data — GPL's source-disclosure obligation doesn't reach the Figma project file itself, only the actual source of what's distributed. Keep the design tokens as plain values in the MIT layer if the future mobile client needs the same branding (same reasoning as the rest of the data layer — see `CLAUDE.md`'s licensing note).
 
 ## 12. Testing Strategy
 
 Absent from the backend EDD's review, worth not repeating here:
 
-- **Vitest** + **`@testing-library/svelte`** for component/state-module tests — particularly `teamComp.svelte.ts` and the section 6 aggregation logic, since that's the one piece of real client-side logic in an otherwise mostly-presentational app.
-- **Playwright**, scoped narrowly: one smoke test that the app loads and shows heroes, one that offline mode (service worker cache) actually serves the home view with the network disabled. Full e2e coverage isn't proportionate to this project's size — expand only if the app's surface area grows.
+- **Vitest** + **`@testing-library/svelte`**. MVP needs relatively little here (mostly static rendering from `load()` data). The real target is V2's pure aggregation functions (`getMergedWeaknesses`, `getThreatsToTeam`, `getCounterSuggestions` — section 6.2) and `heroSelection.svelte.ts`, since that's the one piece of real client-side logic in an otherwise mostly-presentational app.
+- **Playwright**, scoped narrowly: one smoke test that the app loads and shows heroes (relevant from MVP on), one that offline mode (service worker cache) actually serves the home view with the network disabled. Full e2e coverage isn't proportionate to this project's size — expand only if the app's surface area grows.
 
 ## 13. Open Items
 
-- **`compile.ts`'s output path needs to change** (`public/api/v1` → `static/api/v1`) before this spec is buildable — see section 9. Small, separate commit in `counters-data-core`.
-- `matchups/index.json` doesn't exist yet — coordinate with `counters-data-core` before starting section 6.
+- **`compile.ts`'s output path needs to change** (`public/api/v1` → `static/api/v1`) before **MVP** can build — see section 9. Small, separate commit in `counters-data-core`.
+- **Portrait art sourcing is unresolved and blocks MVP** — see section 10.3.
+- **`distance`/`speed` mechanics data work blocks V2** — see section 4.2. Real re-authoring across a meaningful chunk of the 51 heroes, not a one-line change.
+- `matchups/index.json` and the 5v5/6v6 mode toggle are V3-only — don't build until V3 is actually greenlit (section 1.1, section 4.3).
 - Custom domain vs. subpath deploy needs confirming before the first CI run (section 9).
-- Figma design system referenced but not yet reviewed (section 10) — placeholder styling only until that changes.
+- No component-level design specs (buttons, spacing, radii) yet — section 10.4.
 - Secure-context behavior for `*.localhost` (section 8) is a browser implementation detail worth a one-time manual confirmation, not a documented guarantee.
