@@ -1,5 +1,5 @@
 {
-  "name": "@counters-to/counters-data-core",
+  "name": "counters-data-core",
   "version": "1.0.0",
   "private": true,
   "description": "Flat-file data ingestion, cross-validation, and static REST endpoint compiler for Counters.to",

@@ -1,0 +1,7 @@
+{
+  "name": "counters-to",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
