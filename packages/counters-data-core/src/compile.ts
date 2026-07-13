@@ -6,7 +6,7 @@
  *   2. Relational Graph Assembly (threats / advantages join)
  *   3. Content Transformation (markdown -> HTML)
  *
- * Output written to packages/counters-web/public/api/v1/ per EDD section 4.
+ * Output written to packages/counters-web/static/api/v1/ per EDD section 4.
  */
 
 import fs from "node:fs";
@@ -20,7 +20,7 @@ const DATA_DIR = path.join(ROOT, "src", "data");
 const HEROES_DIR = path.join(DATA_DIR, "heroes");
 const REGISTRY_PATH = path.join(DATA_DIR, "registry.yaml");
 
-const OUT_ROOT = path.resolve(ROOT, "..", "counters-web", "public", "api", "v1");
+const OUT_ROOT = path.resolve(ROOT, "..", "counters-web", "static", "api", "v1");
 
 // ---------- Types ----------
 
