@@ -15,12 +15,12 @@ export const entries: EntryGenerator = () => {
 };
 
 export const load: PageLoad = async ({ fetch, params }) => {
-	const res = await fetch(asset(`/api/v1/heroes/${params.id}/index.json`));
-	if (!res.ok) {
+	const response = await fetch(asset(`/api/v1/heroes/${params.id}/index.json`));
+	if (!response.ok) {
 		error(404, 'Hero not found');
 	}
 
-	const { data: hero }: ApiResponse<HeroDetail> = await res.json();
+	const { data: hero }: ApiResponse<HeroDetail> = await response.json();
 
 	return { hero };
 };
