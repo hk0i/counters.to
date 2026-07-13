@@ -29,6 +29,12 @@ Sections below are tagged **[MVP]**, **[V2]**, or **[V3]** where the distinction
 - No separate router library — file-based routing is built into SvelteKit
 - No external state library — Svelte 5 runes (`$state`, `$derived`) in plain `.svelte.ts` modules cover this app's small shared-state needs, introduced starting at V2 (see section 6)
 
+### Why TypeScript 6.x, not the 7.x line
+
+Pinned via a root-level npm `overrides` entry (`"typescript": "^6.0.3"`), not just each package's own `devDependencies` — `svelte-check`'s own internal dependency on `typescript` resolves independently of what this repo declares, so matching versions in our own `package.json` files wasn't sufficient on its own; the override forces one deduplicated `typescript` across the whole install.
+
+The reason isn't a stance on 7.x itself — it's that `svelte-check` (as currently published) crashes outright against it (`Cannot read properties of undefined (reading 'useCaseSensitiveFileNames')`), and `@sveltejs/kit` plus every `typescript-eslint` subpackage independently resolve to the 6.x line on their own whenever both are available, which is a strong signal the SvelteKit/svelte-check/typescript-eslint toolchain hasn't caught up to 7.x's new module shape yet. Nothing to do here but wait — revisit once those packages ship versions that explicitly support 7.x. Given this app's total source surface (per the directory blueprint in section 3) stays in the range of a few dozen files even through V3, 7.x's main draw — much faster type-checking on large codebases — isn't a compelling reason to fight the toolchain in the meantime.
+
 ### Why SvelteKit over plain Svelte + a router
 
 Real Svelte apps overwhelmingly use SvelteKit rather than hand-rolled Vite+Svelte+router setups — it's the maintained, idiomatic path, with file-based routing and `load` functions as first-class concepts rather than something bolted on.
