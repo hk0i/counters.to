@@ -11,7 +11,12 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			adapter: adapter()
+			adapter: adapter({
+				// Every real route is prerendered (strict mode stays on), but GitHub
+				// Pages needs an actual 404.html to serve for genuinely bogus URLs —
+				// see EDD section 5.
+				fallback: '404.html'
+			})
 		})
 	],
 	test: {
