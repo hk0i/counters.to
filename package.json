@@ -3,5 +3,8 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "overrides": {
+    "typescript": "^6.0.3"
+  }
 }
