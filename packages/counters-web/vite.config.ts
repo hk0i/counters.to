@@ -2,6 +2,7 @@ import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
 import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
+import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 
 export default defineConfig({
 	plugins: [
@@ -17,6 +18,44 @@ export default defineConfig({
 				// see EDD section 5.
 				fallback: '404.html'
 			})
+		}),
+		SvelteKitPWA({
+			kit: {
+				// Mirror the adapter-static fallback above so the precache manifest
+				// accounts for it correctly.
+				adapterFallback: '404.html'
+			},
+			registerType: 'autoUpdate',
+			manifest: {
+				name: 'Counters.to',
+				short_name: 'Counters.to',
+				description:
+					'Overwatch counter-picking reference — see what a hero is weak to and what beats it.',
+				theme_color: '#111111',
+				background_color: '#ffffff',
+				// Placeholder icons pending real branding/portrait art (EDD section 10.3
+				// blocks that the same way it blocks hero card portraits).
+				icons: [
+					{ src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
+					{ src: 'icon-512.png', sizes: '512x512', type: 'image/png' }
+				]
+			},
+			workbox: {
+				// EDD section 4.5: precache the prerendered app shell (every route is
+				// static HTML at build time, so this covers the whole MVP experience).
+				globPatterns: ['**/*.{html,js,css,ico,png,svg,webmanifest}'],
+				// EDD section 4.5: runtime-cache the compiled JSON API,
+				// stale-while-revalidate since it only changes on redeploy.
+				runtimeCaching: [
+					{
+						urlPattern: ({ url }) => url.pathname.startsWith('/api/v1/'),
+						handler: 'StaleWhileRevalidate',
+						options: {
+							cacheName: 'api-v1'
+						}
+					}
+				]
+			}
 		})
 	],
 	test: {
