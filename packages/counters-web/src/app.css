@@ -1,0 +1,20 @@
+/* Minimal baseline so pages render legibly before the real design system
+   (EDD section 10) is wired up. Explicit color-scheme + colors, since an
+   unstyled page otherwise gets inconsistent browser auto-dark-mode
+   heuristics — light background, dark text on some elements but not
+   others. */
+
+:root {
+	color-scheme: light;
+}
+
+body {
+	margin: 0;
+	background: #ffffff;
+	color: #111111;
+	font-family:
+		system-ui,
+		-apple-system,
+		'Segoe UI',
+		sans-serif;
+}
