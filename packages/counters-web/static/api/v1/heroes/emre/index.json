@@ -1,0 +1,321 @@
+{
+  "data": {
+    "id": "emre",
+    "name": "Emre",
+    "role": "damage",
+    "lastUpdated": "2026-07-10T00:00:00.000Z",
+    "damageTypes": [
+      "hitscan",
+      "explosive"
+    ],
+    "mechanics": [
+      "mobility-tool",
+      "lifesteal",
+      "burn"
+    ],
+    "strategy": {
+      "archetype": "dive",
+      "tags": [
+        "flanker",
+        "duelist"
+      ]
+    },
+    "weakTo": [
+      "crowd-control",
+      "beam"
+    ],
+    "strongTo": [
+      "hitscan",
+      "shotgun"
+    ],
+    "threats": [
+      {
+        "heroId": "ana",
+        "heroName": "Ana",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "brigitte",
+        "heroName": "Brigitte",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "cassidy",
+        "heroName": "Cassidy",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "domina",
+        "heroName": "Domina",
+        "matchedTraits": [
+          "crowd-control",
+          "beam"
+        ]
+      },
+      {
+        "heroId": "doomfist",
+        "heroName": "Doomfist",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "hanzo",
+        "heroName": "Hanzo",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "hazard",
+        "heroName": "Hazard",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "mauga",
+        "heroName": "Mauga",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "mei",
+        "heroName": "Mei",
+        "matchedTraits": [
+          "crowd-control",
+          "beam"
+        ]
+      },
+      {
+        "heroId": "mercy",
+        "heroName": "Mercy",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "mizuki",
+        "heroName": "Mizuki",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "moira",
+        "heroName": "Moira",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "orisa",
+        "heroName": "Orisa",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "ramattra",
+        "heroName": "Ramattra",
+        "matchedTraits": [
+          "crowd-control",
+          "beam"
+        ]
+      },
+      {
+        "heroId": "reinhardt",
+        "heroName": "Reinhardt",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "sigma",
+        "heroName": "Sigma",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "sombra",
+        "heroName": "Sombra",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "symmetra",
+        "heroName": "Symmetra",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "winston",
+        "heroName": "Winston",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "wrecking-ball",
+        "heroName": "Wrecking Ball",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "zarya",
+        "heroName": "Zarya",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "zenyatta",
+        "heroName": "Zenyatta",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      }
+    ],
+    "advantages": [
+      {
+        "heroId": "ashe",
+        "heroName": "Ashe",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "baptiste",
+        "heroName": "Baptiste",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "bastion",
+        "heroName": "Bastion",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "cassidy",
+        "heroName": "Cassidy",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "doomfist",
+        "heroName": "Doomfist",
+        "matchedTraits": [
+          "shotgun"
+        ]
+      },
+      {
+        "heroId": "echo",
+        "heroName": "Echo",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "hazard",
+        "heroName": "Hazard",
+        "matchedTraits": [
+          "shotgun"
+        ]
+      },
+      {
+        "heroId": "illari",
+        "heroName": "Illari",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "mauga",
+        "heroName": "Mauga",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "reaper",
+        "heroName": "Reaper",
+        "matchedTraits": [
+          "shotgun"
+        ]
+      },
+      {
+        "heroId": "roadhog",
+        "heroName": "Roadhog",
+        "matchedTraits": [
+          "hitscan",
+          "shotgun"
+        ]
+      },
+      {
+        "heroId": "sierra",
+        "heroName": "Sierra",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "sojourn",
+        "heroName": "Sojourn",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "soldier-76",
+        "heroName": "Soldier: 76",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "sombra",
+        "heroName": "Sombra",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "torbjorn",
+        "heroName": "Torbjörn",
+        "matchedTraits": [
+          "shotgun"
+        ]
+      },
+      {
+        "heroId": "tracer",
+        "heroName": "Tracer",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      },
+      {
+        "heroId": "widowmaker",
+        "heroName": "Widowmaker",
+        "matchedTraits": [
+          "hitscan"
+        ]
+      }
+    ],
+    "htmlContent": "<h2>Core Playbook</h2>\n<p>Emre strafes at close-to-mid range with his burst rifle, swapping to the lifesteal pistol of Siphon Blaster to win extended duels and Cyber Frag to finish off anyone who tries to retreat.</p>\n<h2>Tactical Caveats</h2>\n<p>His sustain comes entirely from landing shots on enemies, so against a team that plays around cover and denies him clean sightlines, he loses his main survivability tool.</p>\n"
+  }
+}

@@ -1,0 +1,318 @@
+{
+  "data": {
+    "id": "orisa",
+    "name": "Orisa",
+    "role": "tank",
+    "lastUpdated": "2026-07-10T00:00:00.000Z",
+    "damageTypes": [
+      "projectile"
+    ],
+    "mechanics": [
+      "barrier",
+      "crowd-control",
+      "mobility-tool",
+      "immunity"
+    ],
+    "strategy": {
+      "archetype": "brawl",
+      "tags": [
+        "bodyguard",
+        "zone-control"
+      ]
+    },
+    "weakTo": [
+      "beam",
+      "anti-heal"
+    ],
+    "strongTo": [
+      "projectile",
+      "explosive"
+    ],
+    "threats": [
+      {
+        "heroId": "ana",
+        "heroName": "Ana",
+        "matchedTraits": [
+          "anti-heal"
+        ]
+      },
+      {
+        "heroId": "domina",
+        "heroName": "Domina",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "mei",
+        "heroName": "Mei",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "mercy",
+        "heroName": "Mercy",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "moira",
+        "heroName": "Moira",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "ramattra",
+        "heroName": "Ramattra",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "symmetra",
+        "heroName": "Symmetra",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "winston",
+        "heroName": "Winston",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "zarya",
+        "heroName": "Zarya",
+        "matchedTraits": [
+          "beam"
+        ]
+      }
+    ],
+    "advantages": [
+      {
+        "heroId": "ana",
+        "heroName": "Ana",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "anran",
+        "heroName": "Anran",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "ashe",
+        "heroName": "Ashe",
+        "matchedTraits": [
+          "explosive"
+        ]
+      },
+      {
+        "heroId": "baptiste",
+        "heroName": "Baptiste",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "bastion",
+        "heroName": "Bastion",
+        "matchedTraits": [
+          "explosive"
+        ]
+      },
+      {
+        "heroId": "brigitte",
+        "heroName": "Brigitte",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "dva",
+        "heroName": "D.Va",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "echo",
+        "heroName": "Echo",
+        "matchedTraits": [
+          "explosive"
+        ]
+      },
+      {
+        "heroId": "emre",
+        "heroName": "Emre",
+        "matchedTraits": [
+          "explosive"
+        ]
+      },
+      {
+        "heroId": "freja",
+        "heroName": "Freja",
+        "matchedTraits": [
+          "projectile",
+          "explosive"
+        ]
+      },
+      {
+        "heroId": "genji",
+        "heroName": "Genji",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "hanzo",
+        "heroName": "Hanzo",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "jetpack-cat",
+        "heroName": "Jetpack Cat",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "junker-queen",
+        "heroName": "Junker Queen",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "junkrat",
+        "heroName": "Junkrat",
+        "matchedTraits": [
+          "explosive"
+        ]
+      },
+      {
+        "heroId": "juno",
+        "heroName": "Juno",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "kiriko",
+        "heroName": "Kiriko",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "lifeweaver",
+        "heroName": "Lifeweaver",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "lucio",
+        "heroName": "Lúcio",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "mizuki",
+        "heroName": "Mizuki",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "moira",
+        "heroName": "Moira",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "pharah",
+        "heroName": "Pharah",
+        "matchedTraits": [
+          "explosive"
+        ]
+      },
+      {
+        "heroId": "sigma",
+        "heroName": "Sigma",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "sojourn",
+        "heroName": "Sojourn",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "soldier-76",
+        "heroName": "Soldier: 76",
+        "matchedTraits": [
+          "explosive"
+        ]
+      },
+      {
+        "heroId": "torbjorn",
+        "heroName": "Torbjörn",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "vendetta",
+        "heroName": "Vendetta",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "venture",
+        "heroName": "Venture",
+        "matchedTraits": [
+          "explosive"
+        ]
+      },
+      {
+        "heroId": "wrecking-ball",
+        "heroName": "Wrecking Ball",
+        "matchedTraits": [
+          "explosive"
+        ]
+      },
+      {
+        "heroId": "wuyang",
+        "heroName": "Wuyang",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "zenyatta",
+        "heroName": "Zenyatta",
+        "matchedTraits": [
+          "projectile"
+        ]
+      }
+    ],
+    "htmlContent": "<h2>Core Playbook</h2>\n<p>Orisa leads with Fortify active to shrug off crowd control, using Energy Javelin to peel dive threats off her supports and Terra Surge to force the enemy off a contested point.</p>\n<h2>Tactical Caveats</h2>\n<p>Her damage output is low relative to other brawl tanks, so she relies on teammates to convert the space she creates rather than winning duels on her own.</p>\n"
+  }
+}

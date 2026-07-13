@@ -1,0 +1,271 @@
+{
+  "data": {
+    "id": "hazard",
+    "name": "Hazard",
+    "role": "tank",
+    "lastUpdated": "2026-07-10T00:00:00.000Z",
+    "damageTypes": [
+      "shotgun"
+    ],
+    "mechanics": [
+      "mobility-tool",
+      "deployable",
+      "crowd-control"
+    ],
+    "strategy": {
+      "archetype": "brawl",
+      "tags": [
+        "zone-control",
+        "area-denial"
+      ]
+    },
+    "weakTo": [
+      "beam",
+      "crowd-control"
+    ],
+    "strongTo": [
+      "melee",
+      "shotgun"
+    ],
+    "threats": [
+      {
+        "heroId": "ana",
+        "heroName": "Ana",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "brigitte",
+        "heroName": "Brigitte",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "cassidy",
+        "heroName": "Cassidy",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "domina",
+        "heroName": "Domina",
+        "matchedTraits": [
+          "beam",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "doomfist",
+        "heroName": "Doomfist",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "hanzo",
+        "heroName": "Hanzo",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "mauga",
+        "heroName": "Mauga",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "mei",
+        "heroName": "Mei",
+        "matchedTraits": [
+          "beam",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "mercy",
+        "heroName": "Mercy",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "mizuki",
+        "heroName": "Mizuki",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "moira",
+        "heroName": "Moira",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "orisa",
+        "heroName": "Orisa",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "ramattra",
+        "heroName": "Ramattra",
+        "matchedTraits": [
+          "beam",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "reinhardt",
+        "heroName": "Reinhardt",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "sigma",
+        "heroName": "Sigma",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "sombra",
+        "heroName": "Sombra",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "symmetra",
+        "heroName": "Symmetra",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "winston",
+        "heroName": "Winston",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "wrecking-ball",
+        "heroName": "Wrecking Ball",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "zarya",
+        "heroName": "Zarya",
+        "matchedTraits": [
+          "beam"
+        ]
+      },
+      {
+        "heroId": "zenyatta",
+        "heroName": "Zenyatta",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      }
+    ],
+    "advantages": [
+      {
+        "heroId": "brigitte",
+        "heroName": "Brigitte",
+        "matchedTraits": [
+          "melee"
+        ]
+      },
+      {
+        "heroId": "doomfist",
+        "heroName": "Doomfist",
+        "matchedTraits": [
+          "melee",
+          "shotgun"
+        ]
+      },
+      {
+        "heroId": "genji",
+        "heroName": "Genji",
+        "matchedTraits": [
+          "melee"
+        ]
+      },
+      {
+        "heroId": "junker-queen",
+        "heroName": "Junker Queen",
+        "matchedTraits": [
+          "melee"
+        ]
+      },
+      {
+        "heroId": "ramattra",
+        "heroName": "Ramattra",
+        "matchedTraits": [
+          "melee"
+        ]
+      },
+      {
+        "heroId": "reaper",
+        "heroName": "Reaper",
+        "matchedTraits": [
+          "shotgun"
+        ]
+      },
+      {
+        "heroId": "reinhardt",
+        "heroName": "Reinhardt",
+        "matchedTraits": [
+          "melee"
+        ]
+      },
+      {
+        "heroId": "roadhog",
+        "heroName": "Roadhog",
+        "matchedTraits": [
+          "shotgun"
+        ]
+      },
+      {
+        "heroId": "torbjorn",
+        "heroName": "Torbjörn",
+        "matchedTraits": [
+          "shotgun"
+        ]
+      },
+      {
+        "heroId": "vendetta",
+        "heroName": "Vendetta",
+        "matchedTraits": [
+          "melee"
+        ]
+      },
+      {
+        "heroId": "venture",
+        "heroName": "Venture",
+        "matchedTraits": [
+          "melee"
+        ]
+      },
+      {
+        "heroId": "winston",
+        "heroName": "Winston",
+        "matchedTraits": [
+          "melee"
+        ]
+      }
+    ],
+    "htmlContent": "<h2>Core Playbook</h2>\n<p>Hazard uses Jagged Wall to cut off an angle or trap enemies against it, then Violent Leap to close the remaining distance and knock a priority target into his kill zone.</p>\n<h2>Tactical Caveats</h2>\n<p>His wall and leap are both single-target commitments with real cooldowns; whiffing either against a team that just walks around the wall leaves him without a follow-up.</p>\n"
+  }
+}

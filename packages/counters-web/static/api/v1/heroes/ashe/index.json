@@ -1,0 +1,581 @@
+{
+  "data": {
+    "id": "ashe",
+    "name": "Ashe",
+    "role": "damage",
+    "lastUpdated": "2026-07-10T00:00:00.000Z",
+    "damageTypes": [
+      "hitscan",
+      "explosive"
+    ],
+    "mechanics": [
+      "mobility-tool",
+      "deployable"
+    ],
+    "strategy": {
+      "archetype": "poke",
+      "tags": [
+        "pick-potential",
+        "duelist"
+      ]
+    },
+    "weakTo": [
+      "mobility-tool",
+      "crowd-control"
+    ],
+    "strongTo": [
+      "barrier",
+      "projectile"
+    ],
+    "threats": [
+      {
+        "heroId": "ana",
+        "heroName": "Ana",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "anran",
+        "heroName": "Anran",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "baptiste",
+        "heroName": "Baptiste",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "brigitte",
+        "heroName": "Brigitte",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "cassidy",
+        "heroName": "Cassidy",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "domina",
+        "heroName": "Domina",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "doomfist",
+        "heroName": "Doomfist",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "dva",
+        "heroName": "D.Va",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "echo",
+        "heroName": "Echo",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "emre",
+        "heroName": "Emre",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "freja",
+        "heroName": "Freja",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "genji",
+        "heroName": "Genji",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "hanzo",
+        "heroName": "Hanzo",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "hazard",
+        "heroName": "Hazard",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "illari",
+        "heroName": "Illari",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "jetpack-cat",
+        "heroName": "Jetpack Cat",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "junker-queen",
+        "heroName": "Junker Queen",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "junkrat",
+        "heroName": "Junkrat",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "juno",
+        "heroName": "Juno",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "kiriko",
+        "heroName": "Kiriko",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "lifeweaver",
+        "heroName": "Lifeweaver",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "lucio",
+        "heroName": "Lúcio",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "mauga",
+        "heroName": "Mauga",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "mei",
+        "heroName": "Mei",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "mercy",
+        "heroName": "Mercy",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "mizuki",
+        "heroName": "Mizuki",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "moira",
+        "heroName": "Moira",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "orisa",
+        "heroName": "Orisa",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "pharah",
+        "heroName": "Pharah",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "ramattra",
+        "heroName": "Ramattra",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "reaper",
+        "heroName": "Reaper",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "reinhardt",
+        "heroName": "Reinhardt",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "roadhog",
+        "heroName": "Roadhog",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "sierra",
+        "heroName": "Sierra",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "sigma",
+        "heroName": "Sigma",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "sojourn",
+        "heroName": "Sojourn",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "soldier-76",
+        "heroName": "Soldier: 76",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "sombra",
+        "heroName": "Sombra",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "tracer",
+        "heroName": "Tracer",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "vendetta",
+        "heroName": "Vendetta",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "venture",
+        "heroName": "Venture",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "widowmaker",
+        "heroName": "Widowmaker",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "winston",
+        "heroName": "Winston",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "wrecking-ball",
+        "heroName": "Wrecking Ball",
+        "matchedTraits": [
+          "mobility-tool",
+          "crowd-control"
+        ]
+      },
+      {
+        "heroId": "wuyang",
+        "heroName": "Wuyang",
+        "matchedTraits": [
+          "mobility-tool"
+        ]
+      },
+      {
+        "heroId": "zenyatta",
+        "heroName": "Zenyatta",
+        "matchedTraits": [
+          "crowd-control"
+        ]
+      }
+    ],
+    "advantages": [
+      {
+        "heroId": "ana",
+        "heroName": "Ana",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "anran",
+        "heroName": "Anran",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "baptiste",
+        "heroName": "Baptiste",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "brigitte",
+        "heroName": "Brigitte",
+        "matchedTraits": [
+          "barrier",
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "domina",
+        "heroName": "Domina",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "dva",
+        "heroName": "D.Va",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "freja",
+        "heroName": "Freja",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "genji",
+        "heroName": "Genji",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "hanzo",
+        "heroName": "Hanzo",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "jetpack-cat",
+        "heroName": "Jetpack Cat",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "junker-queen",
+        "heroName": "Junker Queen",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "juno",
+        "heroName": "Juno",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "kiriko",
+        "heroName": "Kiriko",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "lifeweaver",
+        "heroName": "Lifeweaver",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "lucio",
+        "heroName": "Lúcio",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "mei",
+        "heroName": "Mei",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "mizuki",
+        "heroName": "Mizuki",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "moira",
+        "heroName": "Moira",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "orisa",
+        "heroName": "Orisa",
+        "matchedTraits": [
+          "barrier",
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "ramattra",
+        "heroName": "Ramattra",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "reinhardt",
+        "heroName": "Reinhardt",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "sigma",
+        "heroName": "Sigma",
+        "matchedTraits": [
+          "barrier",
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "sojourn",
+        "heroName": "Sojourn",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "symmetra",
+        "heroName": "Symmetra",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "torbjorn",
+        "heroName": "Torbjörn",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "vendetta",
+        "heroName": "Vendetta",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "winston",
+        "heroName": "Winston",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "wuyang",
+        "heroName": "Wuyang",
+        "matchedTraits": [
+          "projectile"
+        ]
+      },
+      {
+        "heroId": "zarya",
+        "heroName": "Zarya",
+        "matchedTraits": [
+          "barrier"
+        ]
+      },
+      {
+        "heroId": "zenyatta",
+        "heroName": "Zenyatta",
+        "matchedTraits": [
+          "projectile"
+        ]
+      }
+    ],
+    "htmlContent": "<h2>Core Playbook</h2>\n<p>Ashe holds a mid-range sightline with the Viper&#39;s scoped shots, using Coach Gun to create separation and B.O.B. to force a fight on her terms.</p>\n<h2>Tactical Caveats</h2>\n<p>Her scoped fire rate is slow relative to other hitscan duelists, so flankers who close distance before she can land a headshot often win the exchange outright.</p>\n"
+  }
+}
