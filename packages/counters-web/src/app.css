@@ -1,17 +1,69 @@
-/* Minimal baseline so pages render legibly before the real design system
-   (EDD section 10) is wired up. Explicit color-scheme + colors, since an
-   unstyled page otherwise gets inconsistent browser auto-dark-mode
-   heuristics — light background, dark text on some elements but not
-   others. */
+/* Color tokens from the design system (EDD section 10.1) — Tango Palette
+   500/700/900 shades with 50-300 hand-interpolated by the source Figma
+   file. Neutral uses the finer 9-step scale documented there (including
+   the 800/900 duplicate at #12161C, which is how the source file has it,
+   not a typo here); the rest use the 5-step 50/300/500/700/900 scale. */
 
 :root {
 	color-scheme: light;
+
+	--color-neutral-50: #f2f8ff;
+	--color-neutral-100: #d9eaff;
+	--color-neutral-200: #bfdcff;
+	--color-neutral-300: #a7ceff;
+	--color-neutral-400: #7590b2;
+	--color-neutral-500: #546880;
+	--color-neutral-600: #333f4e;
+	--color-neutral-700: #232b36;
+	--color-neutral-800: #12161c;
+	--color-neutral-900: #12161c;
+
+	--color-primary-50: #fce2bd;
+	--color-primary-300: #fcc97e;
+	--color-primary-500: #fcaf3e;
+	--color-primary-700: #f57900;
+	--color-primary-900: #ce5c00;
+
+	--color-secondary-50: #ffedfd;
+	--color-secondary-300: #e0badc;
+	--color-secondary-500: #ad7fa8;
+	--color-secondary-700: #75507b;
+	--color-secondary-900: #5c3566;
+
+	--color-success-50: #d4ffab;
+	--color-success-300: #aff26d;
+	--color-success-500: #8ae234;
+	--color-success-700: #73d216;
+	--color-success-900: #4e9a06;
+
+	--color-warning-50: #fff49c;
+	--color-warning-300: #fced74;
+	--color-warning-500: #fce94f;
+	--color-warning-700: #edd400;
+	--color-warning-900: #c4a000;
+
+	--color-error-50: #ffc4c4;
+	--color-error-300: #fa7575;
+	--color-error-500: #ef2929;
+	--color-error-700: #cc0000;
+	--color-error-900: #a40000;
+
+	--color-white: #ffffff;
+	--color-black: #000000;
+
+	/* Semantic aliases — the only names components should reference
+	   directly, so the raw palette above can shift without touching
+	   every component's CSS. */
+	--color-bg: var(--color-white);
+	--color-text: var(--color-neutral-900);
+	--color-border: var(--color-neutral-300);
+	--color-surface: var(--color-neutral-50);
 }
 
 body {
 	margin: 0;
-	background: #ffffff;
-	color: #111111;
+	background: var(--color-bg);
+	color: var(--color-text);
 	font-family:
 		system-ui,
 		-apple-system,
