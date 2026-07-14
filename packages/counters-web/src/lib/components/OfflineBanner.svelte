@@ -9,8 +9,8 @@
 <style>
 	.offline-banner {
 		padding: 0.5rem 1rem;
-		background: #f5f5f5;
-		border-bottom: 1px solid #ccc;
+		background: var(--color-warning-bg);
+		border-bottom: 1px solid var(--color-warning-border);
 		text-align: center;
 		font-size: 0.875rem;
 	}

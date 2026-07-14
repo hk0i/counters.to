@@ -16,14 +16,14 @@
 		flex-direction: column;
 		gap: 0.25rem;
 		padding: 0.75rem 1rem;
-		border: 1px solid #ccc;
+		border: 1px solid var(--color-border);
 		border-radius: 0.5rem;
 		color: inherit;
 		text-decoration: none;
 	}
 
 	.hero-card:hover {
-		border-color: #888;
+		border-color: var(--color-border-hover);
 	}
 
 	.hero-card__role {

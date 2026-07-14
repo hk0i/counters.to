@@ -57,7 +57,18 @@
 	--color-bg: var(--color-white);
 	--color-text: var(--color-neutral-900);
 	--color-border: var(--color-neutral-300);
+	--color-border-hover: var(--color-neutral-500);
 	--color-surface: var(--color-neutral-50);
+
+	/* Primary: "Buttons, primary actions" per the design system table —
+	   the selected/active state of an interactive control. */
+	--color-primary: var(--color-primary-700);
+	--color-on-primary: var(--color-white);
+
+	/* Warning: "So-so things, possible issues" — the offline banner is
+	   exactly that case, not an error. */
+	--color-warning-bg: var(--color-warning-50);
+	--color-warning-border: var(--color-warning-700);
 }
 
 body {

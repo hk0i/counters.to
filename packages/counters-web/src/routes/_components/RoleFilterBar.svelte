@@ -40,17 +40,17 @@
 
 	.chip {
 		padding: 0.35rem 0.75rem;
-		border: 1px solid #ccc;
+		border: 1px solid var(--color-border);
 		border-radius: 999px;
-		background: #ffffff;
+		background: var(--color-bg);
 		color: inherit;
 		text-transform: capitalize;
 		cursor: pointer;
 	}
 
 	.chip.active {
-		background: #111111;
-		border-color: #111111;
-		color: #ffffff;
+		background: var(--color-primary);
+		border-color: var(--color-primary);
+		color: var(--color-on-primary);
 	}
 </style>
