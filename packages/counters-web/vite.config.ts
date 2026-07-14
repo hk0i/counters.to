@@ -12,6 +12,12 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
+			// Deploying to the GitHub Pages project-page subpath for now
+			// (no custom domain wired up yet) — swap back to '' once DNS for
+			// counters.to is pointed at Pages and static/CNAME is added.
+			paths: {
+				base: '/counters.to'
+			},
 			adapter: adapter({
 				// Every real route is prerendered (strict mode stays on), but GitHub
 				// Pages needs an actual 404.html to serve for genuinely bogus URLs —
@@ -23,7 +29,16 @@ export default defineConfig({
 			kit: {
 				// Mirror the adapter-static fallback above so the precache manifest
 				// accounts for it correctly.
-				adapterFallback: '404.html'
+				adapterFallback: '404.html',
+				// `kit.base` is documented as deprecated ("Vite's base is now
+				// properly configured"), but in practice the plugin still reads
+				// its own internal base before SvelteKit's paths.base has
+				// propagated into Vite's resolved config, so the home page's
+				// precache entry silently falls back to "/" instead of
+				// "/counters.to" — which 404s under this subpath deploy and
+				// fails the whole service worker install. Setting this
+				// explicitly is the working fix.
+				base: '/counters.to'
 			},
 			registerType: 'autoUpdate',
 			manifest: {
@@ -48,7 +63,10 @@ export default defineConfig({
 				// stale-while-revalidate since it only changes on redeploy.
 				runtimeCaching: [
 					{
-						urlPattern: ({ url }) => url.pathname.startsWith('/api/v1/'),
+						// Not startsWith — the app is currently served from the
+						// /counters.to subpath (see the base path above), so this
+						// needs to match regardless of base prefix.
+						urlPattern: ({ url }) => url.pathname.includes('/api/v1/'),
 						handler: 'StaleWhileRevalidate',
 						options: {
 							cacheName: 'api-v1'
