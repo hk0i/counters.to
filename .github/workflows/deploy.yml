@@ -40,7 +40,13 @@ jobs:
 
       # adapter-static build: copies static/ into the output and prerenders
       # every route (all hero pages plus the static routes) to real HTML.
+      # BASE_PATH: this deploys to the GitHub Pages project-page subpath
+      # (no custom domain wired up yet) — drop this env var entirely once
+      # DNS for counters.to is pointed at Pages and static/CNAME is added,
+      # see vite.config.ts.
       - name: Build site
+        env:
+          BASE_PATH: /counters.to
         run: npm run build --workspace=counters-web
 
       - name: Upload Pages artifact

@@ -4,6 +4,20 @@ import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 
+// Root ('') is the correct default for everything except the interim GitHub
+// Pages subpath deploy: local dev (vite dev/preview), the Docker/nginx-proxy
+// local environment (EDD section 8), and the eventual counters.to custom
+// domain all serve from the root. Only the GitHub Actions build overrides
+// this — see BASE_PATH in .github/workflows/deploy.yml — since that's the
+// one build target currently living at a GitHub Pages project-page subpath
+// rather than a real origin root. Drop the override entirely once DNS for
+// counters.to is pointed at Pages and static/CNAME is added.
+const rawBase = process.env.BASE_PATH ?? '';
+if (rawBase !== '' && !rawBase.startsWith('/')) {
+	throw new Error(`BASE_PATH must be empty or start with "/", got: "${rawBase}"`);
+}
+const base = rawBase as '' | `/${string}`;
+
 export default defineConfig({
 	plugins: [
 		sveltekit({
@@ -12,11 +26,8 @@ export default defineConfig({
 				runes: ({ filename }) =>
 					filename.split(/[/\\]/).includes('node_modules') ? undefined : true
 			},
-			// Deploying to the GitHub Pages project-page subpath for now
-			// (no custom domain wired up yet) — swap back to '' once DNS for
-			// counters.to is pointed at Pages and static/CNAME is added.
 			paths: {
-				base: '/counters.to'
+				base
 			},
 			adapter: adapter({
 				// Every real route is prerendered (strict mode stays on), but GitHub
@@ -33,12 +44,22 @@ export default defineConfig({
 				// `kit.base` is documented as deprecated ("Vite's base is now
 				// properly configured"), but in practice the plugin still reads
 				// its own internal base before SvelteKit's paths.base has
-				// propagated into Vite's resolved config, so the home page's
-				// precache entry silently falls back to "/" instead of
-				// "/counters.to" — which 404s under this subpath deploy and
-				// fails the whole service worker install. Setting this
-				// explicitly is the working fix.
-				base: '/counters.to'
+				// propagated into Vite's resolved config, so without this the
+				// home page's precache entry silently falls back to "/"
+				// regardless of the real base — which 404s under a subpath
+				// deploy and fails the whole service worker install.
+				//
+				// Root deploys need `|| '/'`, not the raw (empty) base: the
+				// plugin maps index.html's precache entry directly to this
+				// value, and an empty-string precache URL breaks Workbox's
+				// install silently — registration still reaches "activated",
+				// but nothing actually gets cached (confirmed by killing the
+				// origin server and finding the app didn't work offline).
+				// SvelteKit's own paths.base above must stay '' for root
+				// (not '/', which would double up leading slashes in
+				// asset()/resolve() output) — this is a separate, PWA-plugin-
+				// only value that just needs to be non-empty.
+				base: base || '/'
 			},
 			registerType: 'autoUpdate',
 			manifest: {
@@ -63,9 +84,9 @@ export default defineConfig({
 				// stale-while-revalidate since it only changes on redeploy.
 				runtimeCaching: [
 					{
-						// Not startsWith — the app is currently served from the
-						// /counters.to subpath (see the base path above), so this
-						// needs to match regardless of base prefix.
+						// Not startsWith — base above may or may not be a subpath
+						// depending on the build target, so this needs to match
+						// regardless of base prefix.
 						urlPattern: ({ url }) => url.pathname.includes('/api/v1/'),
 						handler: 'StaleWhileRevalidate',
 						options: {

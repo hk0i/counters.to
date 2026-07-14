@@ -1,0 +1,15 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: packages/counters-web/Dockerfile
+    environment:
+      VIRTUAL_HOST: to.counters.localhost
+    networks:
+      - proxy
+    restart: unless-stopped
+
+networks:
+  proxy:
+    external: true
+    name: ${DOCKER_NETWORK_NAME:-switchnet}
