@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: packages/counters-web/Dockerfile
     environment:
-      VIRTUAL_HOST: to.counters.localhost
+      VIRTUAL_HOST: ${DEV_HOSTNAME:-to.counters.localhost}
     networks:
       - proxy
     restart: unless-stopped

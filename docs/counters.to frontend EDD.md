@@ -216,6 +216,12 @@ Goal: serve the built site locally over a real hostname (not `localhost:5173`) s
 
 RFC 6761 reserves the entire `.localhost` TLD to always resolve to loopback (`127.0.0.1`) — modern OS resolvers and browsers honor this for *any* subdomain, not just literal `localhost`, so `to.counters.localhost` resolves without touching `/etc/hosts`. Chromium and Firefox also both treat `*.localhost` origins as secure contexts over plain HTTP, which matters here specifically because **service workers require a secure context to register** — this is what makes the whole offline-testing setup work without needing real TLS certs locally. Worth a quick manual check in devtools (Application → Service Workers) the first time this is wired up, since secure-context handling for `.localhost` subdomains is a browser implementation detail, not a formal guarantee.
 
+### `DEV_HOSTNAME` override — LAN testing on a real device
+
+The hostname is overridable via a gitignored `.env` (`DEV_HOSTNAME=...`, alongside `DOCKER_NETWORK_NAME`; see `.env.example`), defaulting to `to.counters.localhost`. The motivating case is pointing it at a LAN-reachable hostname instead (e.g. `to.counters.lan`, routed to the dev machine on the home network) to test on a real mobile device rather than a desktop browser.
+
+**Caveat, not a bug**: the secure-context exemption above is specific to `*.localhost` — a LAN hostname over plain HTTP does *not* get that same treatment from browsers. Overriding `DEV_HOSTNAME` to something like `to.counters.lan` still works for testing everything else (layout, mobile viewport, general app behavior), but the service worker won't register and PWA/offline behavior specifically won't be testable that way without real TLS. `to.counters.localhost` remains the only path for that.
+
 ### Why the network is external and not committed
 
 `jwilder/nginx-proxy` is meant to be a single, host-wide reverse proxy — it watches the Docker socket for any container with a `VIRTUAL_HOST` env var and routes to it by hostname. Only one process can bind host port 80, so it should run once, independent of any single project, with other projects' containers joining its network rather than each project starting its own copy. That's why this repo's `docker-compose.yml` only defines the `counters-web` service and references the proxy's network as `external: true` — it assumes nginx-proxy is already running from a separate, personal, one-time setup (not part of this repo, since it isn't project-specific).
@@ -239,7 +245,7 @@ services:
     build:
       context: ./packages/counters-web
     environment:
-      VIRTUAL_HOST: to.counters.localhost
+      VIRTUAL_HOST: ${DEV_HOSTNAME:-to.counters.localhost}
     networks:
       - proxy
     restart: unless-stopped
@@ -250,7 +256,7 @@ networks:
     name: ${DOCKER_NETWORK_NAME:-switchnet}
 ```
 
-`DOCKER_NETWORK_NAME` is read from a gitignored `.env` (add `.env` to `.gitignore`, commit `.env.example` with `DOCKER_NETWORK_NAME=switchnet` as documented default) — anyone whose shared proxy network is named differently overrides it locally without touching the committed compose file. `switchnet` is baked in as the fallback default, matching the network name already in use for local development.
+`DOCKER_NETWORK_NAME` and `DEV_HOSTNAME` are both read from a gitignored `.env` (`.gitignore` has `.env` with a `!.env.example` exception; `.env.example` documents both defaults) — anyone whose shared proxy network is named differently, or who wants to override the hostname (see above), does so locally without touching the committed compose file. `proxy_network` and `to.counters.localhost` are the baked-in fallback defaults.
 
 ### `packages/counters-web/Dockerfile`
 
