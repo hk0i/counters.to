@@ -43,3 +43,4 @@ node_modules
 # Docker Compose local dev env (see docker-compose.yml, .env.example)
 .env
 !.env.example
+.claude
