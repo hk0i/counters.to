@@ -229,10 +229,10 @@ The hostname is overridable via a gitignored `.env` (`DEV_HOSTNAME=...`, alongsi
 **One-time host setup (not part of this repo):**
 
 ```bash
-docker network create switchnet   # skip if it already exists
+docker network create proxy_network   # skip if it already exists
 docker run -d --name nginx-proxy --restart unless-stopped \
   -p 80:80 \
-  --network switchnet \
+  --network proxy_network \
   -v /var/run/docker.sock:/tmp/docker.sock:ro \
   jwilder/nginx-proxy
 ```
@@ -243,7 +243,8 @@ docker run -d --name nginx-proxy --restart unless-stopped \
 services:
   web:
     build:
-      context: ./packages/counters-web
+      context: .
+      dockerfile: packages/counters-web/Dockerfile
     environment:
       VIRTUAL_HOST: ${DEV_HOSTNAME:-to.counters.localhost}
     networks:
@@ -253,25 +254,30 @@ services:
 networks:
   proxy:
     external: true
-    name: ${DOCKER_NETWORK_NAME:-switchnet}
+    name: ${DOCKER_NETWORK_NAME:-proxy_network}
 ```
 
 `DOCKER_NETWORK_NAME` and `DEV_HOSTNAME` are both read from a gitignored `.env` (`.gitignore` has `.env` with a `!.env.example` exception; `.env.example` documents both defaults) — anyone whose shared proxy network is named differently, or who wants to override the hostname (see above), does so locally without touching the committed compose file. `proxy_network` and `to.counters.localhost` are the baked-in fallback defaults.
 
 ### `packages/counters-web/Dockerfile`
 
-Builds the real `adapter-static` output and serves it as plain static files — deliberately not `vite preview` or the dev server, so local offline testing exercises the same static-file-serving model GitHub Pages will actually use in production, not a Node dev process:
+Build context is the **repo root**, not `packages/counters-web` — npm workspaces need the root `package.json`/`package-lock.json`, and the site needs `counters-data-core`'s compile step to produce `static/api/v1` before the SvelteKit build runs. Serves the real `adapter-static` output as plain static files via nginx — deliberately not `vite preview` or the dev server, so local offline testing exercises the same static-file-serving model GitHub Pages will actually use in production, not a Node dev process:
 
 ```dockerfile
 FROM node:22-alpine AS build
 WORKDIR /app
 COPY . .
-RUN npm ci && npm run build
+RUN npm ci
+RUN npm run compile --workspace=counters-data-core
+RUN npm run build --workspace=counters-web
 
 FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
+COPY --from=build /app/packages/counters-web/build /usr/share/nginx/html
+COPY packages/counters-web/nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
 ```
+
+`nginx.conf` exists because plain nginx doesn't resolve clean URLs (`/heroes/ana` → the actual file `heroes/ana.html`) the way GitHub Pages does natively — without it, every route but the homepage 404s. It also wires up `error_page 404 /404.html` to serve adapter-static's generated fallback page.
 
 nginx-proxy auto-detects the single `EXPOSE 80` — no `VIRTUAL_PORT` needed unless more ports get added later.
 

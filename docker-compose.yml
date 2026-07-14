@@ -12,4 +12,4 @@ services:
 networks:
   proxy:
     external: true
-    name: ${DOCKER_NETWORK_NAME:-switchnet}
+    name: ${DOCKER_NETWORK_NAME:-proxy_network}
