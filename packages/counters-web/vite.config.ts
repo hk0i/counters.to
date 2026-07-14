@@ -4,14 +4,14 @@ import adapter from '@sveltejs/adapter-static';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { SvelteKitPWA } from '@vite-pwa/sveltekit';
 
-// Root ('') is the correct default for everything except the interim GitHub
-// Pages subpath deploy: local dev (vite dev/preview), the Docker/nginx-proxy
-// local environment (EDD section 8), and the eventual counters.to custom
-// domain all serve from the root. Only the GitHub Actions build overrides
-// this — see BASE_PATH in .github/workflows/deploy.yml — since that's the
-// one build target currently living at a GitHub Pages project-page subpath
-// rather than a real origin root. Drop the override entirely once DNS for
-// counters.to is pointed at Pages and static/CNAME is added.
+// Root ('') is correct everywhere this app is actually served: local dev
+// (vite dev/preview), the Docker/nginx-proxy local environment (EDD section
+// 8), and the live counters.to custom domain all serve from the root.
+// BASE_PATH exists as an override knob for the GitHub Actions build only,
+// used temporarily while counters.to's DNS/custom domain wasn't set up yet
+// (the site briefly lived at the GitHub Pages project-page subpath
+// /counters.to instead) — the workflow no longer sets it, but the mechanism
+// stays in case a subpath deploy is ever needed again.
 const rawBase = process.env.BASE_PATH ?? '';
 if (rawBase !== '' && !rawBase.startsWith('/')) {
 	throw new Error(`BASE_PATH must be empty or start with "/", got: "${rawBase}"`);
