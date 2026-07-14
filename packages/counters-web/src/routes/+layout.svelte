@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 	import { browser } from '$app/environment';
-	import favicon from '$lib/assets/favicon.svg';
+	import { asset } from '$app/paths';
 	import OfflineBanner from '$lib/components/OfflineBanner.svelte';
 
 	let { children } = $props();
@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href={asset('/icon.svg')} />
 </svelte:head>
 
 <OfflineBanner />
