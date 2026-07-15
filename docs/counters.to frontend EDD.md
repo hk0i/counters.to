@@ -339,9 +339,22 @@ Font: **Rubik** (Google Font, SIL Open Font License 1.1 — permissive, fine to 
 
 A separate "Mobile Styles" frame in the same file has its own scale loosely based on Apple HIG (Large Title / Title 1-3 / Headline / Body / Callout / Subheading / Footnote / Caption 1-2) — not pulled into this table since V1 doesn't have a defined mobile breakpoint strategy yet; revisit alongside responsive layout work.
 
-### 10.3 Portrait art — unresolved, blocks MVP
+### 10.3 Portrait art ~~— unresolved, blocks MVP~~
 
-MVP's core interaction is selecting a hero by its portrait, so this isn't a cosmetic gap — it's a blocking one. Using Blizzard's actual hero art directly carries real IP risk for a fan project: a search for an explicit Blizzard fan-content-use policy (comparable to what some other game companies publish) didn't turn up a clear grant — what exists covers fan art *submitted to* Blizzard, a different thing, plus general "no licensing without a formal agreement" language. Default plan until this is resolved: custom or community-licensed icons rather than official art, consistent with the unofficial-fan-project stance already in the licensing plan (section 11). Worth a direct check of blizzard.com/en-us/legal, or real legal advice, before committing to using official art.
+~~MVP's core interaction is selecting a hero by its portrait, so this isn't a cosmetic gap — it's a blocking one. Using Blizzard's actual hero art directly carries real IP risk for a fan project: a search for an explicit Blizzard fan-content-use policy (comparable to what some other game companies publish) didn't turn up a clear grant — what exists covers fan art *submitted to* Blizzard, a different thing, plus general "no licensing without a formal agreement" language. Default plan until this is resolved: custom or community-licensed icons rather than official art, consistent with the unofficial-fan-project stance already in the licensing plan (section 11). Worth a direct check of blizzard.com/en-us/legal, or real legal advice, before committing to using official art.~~
+
+Blizzard's FAQ explicitly says [it's okay to use for noncommercial and personal use](https://www.blizzard.com/en-us/legal/c1ae32ac-7ff9-4ac3-a03b-fc04b8697010/blizzard-legal-faq#1649365241). Our usage of Blizzard IP seems to fall under this jurisdiction, there are other fan sites using it. We don't plan on monetizing anything here, so this seems to be in good order. We will pivot if anything changes.
+
+Screenshot below taken on July 15, 2026, for historical records.
+
+![Blizzard FAQ screenshot regarding copyright/trademark](blizzard-copyright-faq.png)
+
+### Blizzard Copyright Notice
+
+[Blizzard's Copyright Notice about Overwatch](https://www.blizzard.com/en-us/legal/9c9cb70b-d1ed-4e17-998a-16c6df46be7b/copyright-notices#:~:text=Overwatch%E2%84%A2,or%20other%20countries.) should be used for attribution, for records in case it moves:
+
+> **Overwatch™**
+> ®2016 Blizzard Entertainment, Inc. All rights reserved. Overwatch is a trademark or registered trademark of Blizzard Entertainment, Inc. in the U.S. and/or other countries.
 
 ### 10.4 Other gaps
 
