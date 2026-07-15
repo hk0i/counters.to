@@ -41,7 +41,7 @@
 	.chip {
 		padding: var(--space-2) var(--space-3);
 		border: 1px solid var(--color-border);
-		border-radius: 999px;
+		border-radius: var(--radius-full);
 		background: var(--color-surface);
 		color: inherit;
 		text-transform: capitalize;

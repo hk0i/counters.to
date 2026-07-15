@@ -17,7 +17,7 @@
 		gap: var(--space-1);
 		padding: var(--space-3) var(--space-4);
 		border: 1px solid var(--color-border);
-		border-radius: 0.5rem;
+		border-radius: var(--radius-md);
 		background: var(--color-surface);
 		color: inherit;
 		text-decoration: none;

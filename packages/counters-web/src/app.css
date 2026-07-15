@@ -87,6 +87,14 @@
 	--space-4: 1rem; /* 16px */
 	--space-5: 1.5rem; /* 24px */
 	--space-6: 2rem; /* 32px */
+
+	/* Corner radius — also absent from the design system (EDD section
+	   10.4), named rather than numbered since there are only three
+	   sizes in use and "sm/md" reads clearer than a numeric scale would
+	   at this size. */
+	--radius-sm: 0.375rem; /* 6px — inputs */
+	--radius-md: 0.5rem; /* 8px — cards */
+	--radius-full: 999px; /* pill-shaped controls */
 }
 
 /* Dark mode follows the OS setting rather than an in-app toggle for now.

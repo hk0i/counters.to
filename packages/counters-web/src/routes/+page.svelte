@@ -50,7 +50,7 @@
 		width: 100%;
 		max-width: 20rem;
 		border: 1px solid var(--color-border);
-		border-radius: 0.375rem;
+		border-radius: var(--radius-sm);
 		background: var(--color-surface);
 		color: inherit;
 	}
