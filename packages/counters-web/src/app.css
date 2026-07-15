@@ -96,13 +96,59 @@
 	}
 }
 
+/* Typography (EDD section 10.2): Rubik, self-hosted via @fontsource so it's
+   part of the service worker precache and works offline like everything
+   else (see +layout.svelte for the font-face imports). SemiBold (600) is
+   the documented default weight for headings — the source file offers
+   600/700/800 as parallel options with none marked primary, and the EDD
+   picks SemiBold as the reasonable middle choice, leaving Bold/ExtraBold
+   as emphasis variants for content to opt into. Body text uses regular
+   (400), which isn't in the source file's heading-focused type frame but
+   is needed for paragraph copy (About page, hero playbook text). */
 body {
 	margin: 0;
 	background: var(--color-bg);
 	color: var(--color-text);
 	font-family:
+		'Rubik',
 		system-ui,
 		-apple-system,
 		'Segoe UI',
 		sans-serif;
+	font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 600;
+}
+
+/* Sizes from the EDD's Heading 1-6 scale (Display 1/2 are unused for now —
+   nothing in the app calls for a headline larger than an h1 yet). */
+h1 {
+	font-size: 3rem; /* 48px */
+}
+
+h2 {
+	font-size: 2.5rem; /* 40px */
+}
+
+h3 {
+	font-size: 2.25rem; /* 36px */
+}
+
+h4 {
+	font-size: 2rem; /* 32px */
+}
+
+h5 {
+	font-size: 1.5rem; /* 24px */
+}
+
+h6 {
+	font-size: 1.25rem; /* 20px */
 }

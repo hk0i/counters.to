@@ -92,6 +92,19 @@ export default defineConfig({
 						options: {
 							cacheName: 'api-v1'
 						}
+					},
+					{
+						// @fontsource/rubik ships every script subset per weight,
+						// split by unicode-range, so eagerly precaching them all
+						// (globPatterns above) would pull down glyphs this
+						// latin-only app never uses. CacheFirst instead: once the
+						// browser fetches the one subset it actually needs, that
+						// hashed/immutable file is cached for offline reuse.
+						urlPattern: ({ url }) => url.pathname.endsWith('.woff2'),
+						handler: 'CacheFirst',
+						options: {
+							cacheName: 'fonts'
+						}
 					}
 				]
 			}

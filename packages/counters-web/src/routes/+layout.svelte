@@ -1,5 +1,13 @@
 <script lang="ts">
 	import '../app.css';
+	// Each of these covers every script subset (latin, cyrillic, arabic, …)
+	// via unicode-range, but the browser only ever fetches the glyphs it
+	// actually needs to render — safe to import as-is even with no
+	// localization plan yet (EDD open items).
+	import '@fontsource/rubik/400.css';
+	import '@fontsource/rubik/600.css';
+	import '@fontsource/rubik/700.css';
+	import '@fontsource/rubik/800.css';
 	import { browser } from '$app/environment';
 	import { asset } from '$app/paths';
 	import OfflineBanner from '$lib/components/OfflineBanner.svelte';
