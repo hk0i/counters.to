@@ -78,6 +78,29 @@
 	--color-warning-border: var(--color-warning-700);
 	--color-warning-text: var(--color-neutral-900);
 
+	/* Success/Error: "Good things" / "Bad things, destruction" — used here
+	   for the tag cloud's archetype/damage-type pills (TagCloud.svelte).
+	   Same fixed-regardless-of-theme treatment as Warning above, and for
+	   the same reason: these are pastel badge fills, not full-page
+	   surfaces, so they don't need to flip in dark mode — just need their
+	   own pinned text color so contrast holds either way. */
+	--color-success-bg: var(--color-success-50);
+	--color-success-border: var(--color-success-700);
+	--color-success-text: var(--color-neutral-900);
+
+	--color-error-bg: var(--color-error-50);
+	--color-error-border: var(--color-error-700);
+	--color-error-text: var(--color-neutral-900);
+
+	/* A second, visually distinct neutral tier — for TagCloud's mechanics
+	   pills, so they read as "a different category" next to the default
+	   --color-surface pills used for freeform strategy tags. Unlike the
+	   fixed badges above, this one does flip with the theme (see below),
+	   since it's meant to sit quietly in the neutral family either way
+	   rather than pop as a fixed accent color. */
+	--color-neutral-alt-bg: var(--color-neutral-200);
+	--color-neutral-alt-border: var(--color-neutral-400);
+
 	/* Spacing scale — not sourced from the design system, which has no
 	   spacing tokens defined (EDD section 10.4); a 4px base covers the
 	   padding/margin/gap values already in use across components. */
@@ -111,6 +134,9 @@
 		--color-text: var(--color-neutral-50);
 		--color-border: var(--color-neutral-600);
 		--color-border-hover: var(--color-neutral-400);
+
+		--color-neutral-alt-bg: var(--color-neutral-600);
+		--color-neutral-alt-border: var(--color-neutral-400);
 	}
 }
 
