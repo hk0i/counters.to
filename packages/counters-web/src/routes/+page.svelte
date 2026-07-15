@@ -48,11 +48,9 @@
 		margin: var(--space-3) 0;
 		padding: var(--space-2) var(--space-3);
 		width: 100%;
-		max-width: 20rem;
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-sm);
 		background: var(--color-surface);
-		color: inherit;
 	}
 
 	.hero-grid {

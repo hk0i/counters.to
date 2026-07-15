@@ -146,6 +146,19 @@ h6 {
 	font-weight: 600;
 }
 
+/* Form controls don't inherit the body font by default (they use the
+   browser's native control font, e.g. Safari's ~13px form UI font) —
+   without this, inputs render below iOS Safari's 16px zoom-on-focus
+   threshold, and buttons like the role filter chips render smaller/off-
+   family from the rest of the page. */
+button,
+input,
+select,
+textarea {
+	font: inherit;
+	color: inherit;
+}
+
 /* Sizes from the EDD's Heading 1-6 scale (Display 1/2 are unused for now —
    nothing in the app calls for a headline larger than an h1 yet). */
 h1 {
