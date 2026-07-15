@@ -70,9 +70,30 @@
 	--color-on-primary: var(--color-white);
 
 	/* Warning: "So-so things, possible issues" — the offline banner is
-	   exactly that case, not an error. */
+	   exactly that case, not an error. Text is pinned to a dark neutral
+	   rather than following --color-text, since the yellow background
+	   doesn't flip with the theme (see below) — light text on it in dark
+	   mode would fail contrast. */
 	--color-warning-bg: var(--color-warning-50);
 	--color-warning-border: var(--color-warning-700);
+	--color-warning-text: var(--color-neutral-900);
+}
+
+/* Dark mode follows the OS setting rather than an in-app toggle for now.
+   Only the light/dark-sensitive semantic aliases are overridden here —
+   the raw palette above is fixed brand data, and primary/warning stay
+   the same in both themes since they already have enough contrast
+   against both a light and a dark surface. */
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+
+		--color-bg: var(--color-neutral-900);
+		--color-surface: var(--color-neutral-700);
+		--color-text: var(--color-neutral-50);
+		--color-border: var(--color-neutral-600);
+		--color-border-hover: var(--color-neutral-400);
+	}
 }
 
 body {
