@@ -24,6 +24,8 @@
 		align-items: center;
 		gap: var(--space-4);
 		padding: var(--space-4);
+		/* temporary fix for hero banner being too close to the top of the page */
+		margin-top: var(--space-4);
 		margin-bottom: var(--space-4);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-md);
