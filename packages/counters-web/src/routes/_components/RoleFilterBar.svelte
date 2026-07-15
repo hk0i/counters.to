@@ -42,7 +42,7 @@
 		padding: 0.35rem 0.75rem;
 		border: 1px solid var(--color-border);
 		border-radius: 999px;
-		background: var(--color-bg);
+		background: var(--color-surface);
 		color: inherit;
 		text-transform: capitalize;
 		cursor: pointer;

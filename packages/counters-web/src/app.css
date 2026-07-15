@@ -53,12 +53,16 @@
 
 	/* Semantic aliases — the only names components should reference
 	   directly, so the raw palette above can shift without touching
-	   every component's CSS. */
-	--color-bg: var(--color-white);
+	   every component's CSS.
+
+	   --color-bg is the page itself; --color-surface is anything that
+	   should read as sitting above it (cards, chips, panels) — surface
+	   is lighter than bg so those elements pop instead of blending in. */
+	--color-bg: var(--color-neutral-50);
+	--color-surface: var(--color-white);
 	--color-text: var(--color-neutral-900);
 	--color-border: var(--color-neutral-300);
 	--color-border-hover: var(--color-neutral-500);
-	--color-surface: var(--color-neutral-50);
 
 	/* Primary: "Buttons, primary actions" per the design system table —
 	   the selected/active state of an interactive control. */

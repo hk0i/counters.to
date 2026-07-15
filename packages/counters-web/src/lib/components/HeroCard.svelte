@@ -18,6 +18,7 @@
 		padding: 0.75rem 1rem;
 		border: 1px solid var(--color-border);
 		border-radius: 0.5rem;
+		background: var(--color-surface);
 		color: inherit;
 		text-decoration: none;
 	}

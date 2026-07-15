@@ -49,8 +49,10 @@
 		padding: 0.4rem 0.6rem;
 		width: 100%;
 		max-width: 20rem;
-		border: 1px solid #ccc;
+		border: 1px solid var(--color-border);
 		border-radius: 0.375rem;
+		background: var(--color-surface);
+		color: inherit;
 	}
 
 	.hero-grid {
