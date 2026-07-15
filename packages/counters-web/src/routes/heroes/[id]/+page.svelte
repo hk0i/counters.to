@@ -1,4 +1,5 @@
 <script lang="ts">
+	import HeroBanner from './_components/HeroBanner.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -8,8 +9,7 @@
 	<title>{data.hero.name} — Counters.to</title>
 </svelte:head>
 
-<p class="role">{data.hero.role}</p>
-<h1>{data.hero.name}</h1>
+<HeroBanner hero={data.hero} />
 
 <div class="playbook">
 	<!-- eslint-disable-next-line svelte/no-at-html-tags -- htmlContent is rendered from our own compiled hero markdown, not user input -->
@@ -33,12 +33,3 @@
 		{/each}
 	</ul>
 </section>
-
-<style>
-	.role {
-		font-size: 0.75rem;
-		letter-spacing: 0.05em;
-		text-transform: uppercase;
-		opacity: 0.6;
-	}
-</style>
