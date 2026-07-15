@@ -14,8 +14,8 @@
 	.hero-card {
 		display: flex;
 		flex-direction: column;
-		gap: 0.25rem;
-		padding: 0.75rem 1rem;
+		gap: var(--space-1);
+		padding: var(--space-3) var(--space-4);
 		border: 1px solid var(--color-border);
 		border-radius: 0.5rem;
 		background: var(--color-surface);

@@ -8,7 +8,7 @@
 
 <style>
 	.offline-banner {
-		padding: 0.5rem 1rem;
+		padding: var(--space-2) var(--space-4);
 		background: var(--color-warning-bg);
 		border-bottom: 1px solid var(--color-warning-border);
 		color: var(--color-warning-text);

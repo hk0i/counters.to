@@ -45,8 +45,8 @@
 <style>
 	input[type='search'] {
 		display: block;
-		margin: 0.75rem 0;
-		padding: 0.4rem 0.6rem;
+		margin: var(--space-3) 0;
+		padding: var(--space-2) var(--space-3);
 		width: 100%;
 		max-width: 20rem;
 		border: 1px solid var(--color-border);
@@ -58,6 +58,6 @@
 	.hero-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-		gap: 0.75rem;
+		gap: var(--space-3);
 	}
 </style>

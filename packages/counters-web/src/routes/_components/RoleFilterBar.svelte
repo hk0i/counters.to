@@ -34,12 +34,12 @@
 <style>
 	.role-filter {
 		display: flex;
-		gap: 0.5rem;
-		margin-bottom: 1rem;
+		gap: var(--space-2);
+		margin-bottom: var(--space-4);
 	}
 
 	.chip {
-		padding: 0.35rem 0.75rem;
+		padding: var(--space-2) var(--space-3);
 		border: 1px solid var(--color-border);
 		border-radius: 999px;
 		background: var(--color-surface);
