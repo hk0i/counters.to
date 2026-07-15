@@ -8,7 +8,23 @@ other assets are trademarks and/or copyrighted material of Blizzard
 Entertainment, Inc. All rights to that material remain with Blizzard
 Entertainment, Inc.
 
+> Overwatch™
+>
+> ©2016 Blizzard Entertainment, Inc. All rights reserved. Overwatch is a
+> trademark or registered trademark of Blizzard Entertainment, Inc. in the
+> U.S. and/or other countries.
+
 Hero profile data in this repository (`packages/counters-data-core/src/data`)
 consists of original strategic analysis and commentary written for this
 project; it references Blizzard's trademarked hero names and abilities for
 identification purposes only.
+
+## Hero portrait images
+
+`packages/counters-web/static/images/heroes/*.png` are hero portrait images
+sourced directly from <https://overwatch.blizzard.com/en-us/heroes/>. They
+remain Blizzard Entertainment's copyrighted material, used here under the
+personal/noncommercial display license granted on Blizzard's website — they
+are **not** covered by this repository's MIT or GPL-3.0-only license terms
+(see the per-package `license` fields), and may not be reused, altered, or
+redistributed separately from this notice.

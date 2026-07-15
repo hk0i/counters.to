@@ -21,8 +21,18 @@
 	logos, images, and other assets are trademarks and/or copyrighted material of Blizzard
 	Entertainment, Inc. Hero profile data on this site consists of original strategic analysis and
 	commentary written for this project; it references Blizzard's trademarked hero names and abilities
-	for identification purposes only.
+	for identification purposes only. Hero portrait images are sourced directly from Blizzard's
+	official Overwatch website and used under its personal/noncommercial display license — see
+	<a href="https://github.com/hk0i/counters.to/blob/master/NOTICE.md">NOTICE.md</a> for details.
 </p>
+
+<blockquote>
+	<p>
+		Overwatch™<br />
+		©2016 Blizzard Entertainment, Inc. All rights reserved. Overwatch is a trademark or registered trademark
+		of Blizzard Entertainment, Inc. in the U.S. and/or other countries.
+	</p>
+</blockquote>
 
 <h2>Licensing</h2>
 
