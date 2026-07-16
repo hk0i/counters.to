@@ -13,8 +13,8 @@
 		loading="lazy"
 	/>
 	<div class="hero-banner__text">
-		<span class="hero-banner__role">{hero.role}</span>
 		<h1 class="hero-banner__name">{hero.name}</h1>
+		<span class="hero-banner__role">{hero.role}</span>
 	</div>
 </div>
 

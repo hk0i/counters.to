@@ -13,8 +13,8 @@
 		loading="lazy"
 	/>
 	<div class="hero-card__text">
-		<span class="hero-card__role">{hero.role}</span>
 		<span class="hero-card__name">{hero.name}</span>
+		<span class="hero-card__role">{hero.role}</span>
 	</div>
 </a>
 
