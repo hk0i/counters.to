@@ -1,4 +1,6 @@
 <script lang="ts">
+	import RoleIcon from '$lib/components/RoleIcon.svelte';
+
 	let {
 		roles,
 		selected,
@@ -26,6 +28,7 @@
 			class:active={selected === role}
 			onclick={() => onSelect(role)}
 		>
+			<RoleIcon {role} />
 			{role}
 		</button>
 	{/each}
@@ -39,6 +42,9 @@
 	}
 
 	.chip {
+		display: inline-flex;
+		align-items: center;
+		gap: var(--space-2);
 		padding: var(--space-3) var(--space-4);
 		border: 1px solid var(--color-border);
 		border-radius: var(--radius-full);

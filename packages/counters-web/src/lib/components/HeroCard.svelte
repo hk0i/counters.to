@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { asset, resolve } from '$app/paths';
+	import RoleIcon from '$lib/components/RoleIcon.svelte';
 	import type { HeroSummary } from '$lib/types/api';
 
 	let { hero }: { hero: HeroSummary } = $props();
@@ -14,7 +15,10 @@
 	/>
 	<div class="hero-card__text">
 		<span class="hero-card__name">{hero.name}</span>
-		<span class="hero-card__role">{hero.role}</span>
+		<span class="hero-card__role">
+			<RoleIcon role={hero.role} />
+			{hero.role}
+		</span>
 	</div>
 </a>
 
@@ -50,6 +54,9 @@
 	}
 
 	.hero-card__role {
+		display: flex;
+		align-items: center;
+		gap: var(--space-1);
 		font-size: 0.75rem;
 		letter-spacing: 0.05em;
 		text-transform: uppercase;

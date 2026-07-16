@@ -19,12 +19,16 @@ consists of original strategic analysis and commentary written for this
 project; it references Blizzard's trademarked hero names and abilities for
 identification purposes only.
 
-## Hero portrait images
+## Hero portrait and role icon images
 
-`packages/counters-web/static/images/heroes/*.png` are hero portrait images
-sourced directly from <https://overwatch.blizzard.com/en-us/heroes/>. They
-remain Blizzard Entertainment's copyrighted material, used here under the
+`packages/counters-web/static/images/heroes/*.png` and
+`packages/counters-web/static/images/roles/*.svg` are hero portrait and
+role icon images sourced directly from
+<https://overwatch.blizzard.com/en-us/heroes/>. They remain Blizzard
+Entertainment's copyrighted material, used here under the
 personal/noncommercial display license granted on Blizzard's website — they
 are **not** covered by this repository's MIT or GPL-3.0-only license terms
 (see the per-package `license` fields), and may not be reused, altered, or
-redistributed separately from this notice.
+redistributed separately from this notice. The role icons are used
+unmodified (no recoloring/filtering) per that license's no-alteration
+term — see `RoleIcon.svelte`'s fixed-background approach to dark mode.
