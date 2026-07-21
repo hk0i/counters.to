@@ -4,6 +4,7 @@
 
 **Status:** Draft
 **Architecture:** Static SvelteKit site (`adapter-static`, fully prerendered), consuming the flat-file-compiled REST API from `counters-data-core`
+**License:** This document is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) — separate from the code license(s) noted in the root `README.md`.
 
 ## 1. Objective & Scope
 

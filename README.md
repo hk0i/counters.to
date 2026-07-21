@@ -14,8 +14,11 @@ license for the whole repo:
 | `counters-data-core`   | MIT     | Shared data/schema/compiler, meant to be depended on by any client, including a future MIT-licensed mobile app. |
 | `counters-web`         | GPLv3   | The hosted web app/API.                                              |
 | `counters-mobile` (future) | MIT | Depends on `counters-data-core`; needs a permissive license to stay MIT-compatible. |
+| `docs/` (EDDs)         | CC BY-SA 4.0 | Design docs, not code — copyleft-for-content counterpart to the GPL code above. |
 
 Each package carries its own `LICENSE` file in its directory — check there
-for the exact terms that apply to that package's code.
+for the exact terms that apply to that package's code. Docs in `docs/`
+carry their own license header instead (CC BY-SA 4.0), noted at the top of
+each file.
 
 See [`NOTICE.md`](NOTICE.md) for third-party trademark attribution.

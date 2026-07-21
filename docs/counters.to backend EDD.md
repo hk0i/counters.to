@@ -3,7 +3,8 @@
 ## **Project: Counters.to Data Pipeline & Static REST API Core (V1)**
 
 **Status:** Approved  
-**Architecture:** Jamstack Static API / Flat-File Relational Graph
+**Architecture:** Jamstack Static API / Flat-File Relational Graph  
+**License:** This document is licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) — separate from the code license(s) noted in the root `README.md`.
 
 ## **1\. Objective & Scope**
 
