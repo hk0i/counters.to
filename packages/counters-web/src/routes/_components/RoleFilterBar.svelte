@@ -37,8 +37,21 @@
 <style>
 	.role-filter {
 		display: flex;
+		flex-wrap: wrap;
 		gap: var(--space-2);
 		margin-bottom: var(--space-4);
+	}
+
+	/* Below this, four full-size chips don't reliably fit on one line.
+	   Scroll sideways instead of wrapping, so nothing looks orphaned or
+	   gets squished — a partially cut-off chip at the edge is the
+	   scroll affordance. */
+	@media (max-width: 480px) {
+		.role-filter {
+			flex-wrap: nowrap;
+			overflow-x: auto;
+			padding-bottom: var(--space-1);
+		}
 	}
 
 	.chip {
@@ -52,6 +65,7 @@
 		color: inherit;
 		text-transform: capitalize;
 		cursor: pointer;
+		flex-shrink: 0;
 	}
 
 	.chip.active {
