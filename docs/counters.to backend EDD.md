@@ -30,7 +30,7 @@ packages/counters-data-core/
 
 ### **2.1 The Master Taxonomy Contract (registry.yaml)**
 
-Every string literal utilized inside character profiles *must* be registered here. Any unlisted property must fail compilation immediately.
+Every string literal utilized inside character profiles _must_ be registered here. Any unlisted property must fail compilation immediately.
 
 ```
 roles:
@@ -107,21 +107,21 @@ When executed, the TypeScript compiler script must perform three distinct operat
 
 ### **Phase 1: Structural Integrity Verification**
 
-* Parse Front Matter configuration block using gray-matter.  
-* Validate role, damageTypes, mechanics, strategy.archetype, and strategy.tags string arrays explicitly against the compiled hash sets generated from registry.yaml.  
-* Verify cross-reference keys (weakTo, strongTo) only contain items registered in the global damageTypes or mechanics dictionaries.  
-* **Action on Failure:** Emit a verbose error terminal log (\[TYPO ERROR\] Unknown tag \[x\] in \[hero\].md) and execute process.exit(1) to kill any automated CI/CD builds immediately.
+- Parse Front Matter configuration block using gray-matter.
+- Validate role, damageTypes, mechanics, strategy.archetype, and strategy.tags string arrays explicitly against the compiled hash sets generated from registry.yaml.
+- Verify cross-reference keys (weakTo, strongTo) only contain items registered in the global damageTypes or mechanics dictionaries.
+- **Action on Failure:** Emit a verbose error terminal log (\[TYPO ERROR\] Unknown tag \[x\] in \[hero\].md) and execute process.exit(1) to kill any automated CI/CD builds immediately.
 
 ### **Phase 2: Relational Graph Assembly (The "Join" Phase)**
 
 The engine must automatically compute relational advantages in memory across the entire collection to save client computing overhead:
 
-* **Threat Mapping (threats):** For the current hero, iterate through all other heroes. If an enemy possesses a damageType or mechanic listed in the current hero's weakTo array, append that enemy into the current hero's output threats collection.  
-* **Advantage Mapping (advantages):** If an enemy possesses a trait listed in the current hero's strongTo array, append that enemy into the current hero's output advantages collection.
+- **Threat Mapping (threats):** For the current hero, iterate through all other heroes. If an enemy possesses a damageType or mechanic listed in the current hero's weakTo array, append that enemy into the current hero's output threats collection.
+- **Advantage Mapping (advantages):** If an enemy possesses a trait listed in the current hero's strongTo array, append that enemy into the current hero's output advantages collection.
 
 ### **Phase 3: Content Transformation**
 
-* Compile Markdown body prose chunks into highly compressed, safe HTML string payloads utilizing marked.
+- Compile Markdown body prose chunks into highly compressed, safe HTML string payloads utilizing marked.
 
 ## **4\. Output REST API Directory & Schema Contracts**
 
@@ -154,7 +154,12 @@ packages/counters-web/public/api/v1/
       "name": "Sigma",
       "role": "tank",
       "damageTypes": ["projectile"],
-      "mechanics": ["barrier", "deployable", "projectile-eating", "crowd-control"],
+      "mechanics": [
+        "barrier",
+        "deployable",
+        "projectile-eating",
+        "crowd-control"
+      ],
       "strategy": {
         "archetype": "poke",
         "tags": ["zone-control"]
@@ -176,7 +181,12 @@ packages/counters-web/public/api/v1/
     "name": "Sigma",
     "role": "tank",
     "damageTypes": ["projectile"],
-    "mechanics": ["barrier", "deployable", "projectile-eating", "crowd-control"],
+    "mechanics": [
+      "barrier",
+      "deployable",
+      "projectile-eating",
+      "crowd-control"
+    ],
     "strategy": {
       "archetype": "poke",
       "tags": ["zone-control"]
@@ -201,4 +211,3 @@ packages/counters-web/public/api/v1/
   }
 }
 ```
-

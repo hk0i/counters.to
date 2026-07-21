@@ -46,7 +46,7 @@ This is the fairer comparison than "Nuxt vs. plain Vue SPA" was. Nuxt's `generat
 
 ### Why not Pinia-equivalent state management
 
-Svelte 5 runes are built into the compiler, not a library choice — `$state`/`$derived` in a `.svelte.ts` module *is* the idiomatic shared-state pattern here, not a stepping-stone to something heavier.
+Svelte 5 runes are built into the compiler, not a library choice — `$state`/`$derived` in a `.svelte.ts` module _is_ the idiomatic shared-state pattern here, not a stepping-stone to something heavier.
 
 ## 3. Directory Structure Blueprint
 
@@ -129,7 +129,11 @@ Physical path: static/api/v1/matchups/index.json (path per section 9)
 {
   "data": [
     { "heroId": "sigma", "threatFrom": "zarya", "matchedTraits": ["beam"] },
-    { "heroId": "sigma", "advantageOver": "dva", "matchedTraits": ["projectile"] }
+    {
+      "heroId": "sigma",
+      "advantageOver": "dva",
+      "matchedTraits": ["projectile"]
+    }
   ]
 }
 ```
@@ -151,12 +155,12 @@ Physical path: static/api/v1/matchups/index.json (path per section 9)
 
 ## 5. Routing / Page Map
 
-| Route (file) | Stage | Purpose |
-|---|---|---|
-| `src/routes/+page.svelte` (`/`) | MVP → V2 | MVP: static hero grid, filterable by role, searchable by name, links to detail pages. V2: same route gains interactive multi-select (allied + enemy, both uncapped) with inline weakness/threat/suggestion panels. |
-| `src/routes/heroes/[id]/+page.svelte` | MVP | Playbook, tactical caveats, threats list, advantages list for one hero. Stays useful post-V2 as a direct/shareable/SEO-friendly link even once the interactive tool exists. |
-| `src/routes/team-builder/+page.svelte` | V3 (reconsider) | Role-locked (1 tank/2/2 for 5v5, up to 2 tanks/2/2 for 6v6 via a mode toggle), scored counter suggestions from the `matchups` fetch. |
-| `src/routes/about/+page.svelte` | MVP | Project description, license summary, Blizzard IP attribution (section 11). |
+| Route (file)                           | Stage           | Purpose                                                                                                                                                                                                            |
+| -------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `src/routes/+page.svelte` (`/`)        | MVP → V2        | MVP: static hero grid, filterable by role, searchable by name, links to detail pages. V2: same route gains interactive multi-select (allied + enemy, both uncapped) with inline weakness/threat/suggestion panels. |
+| `src/routes/heroes/[id]/+page.svelte`  | MVP             | Playbook, tactical caveats, threats list, advantages list for one hero. Stays useful post-V2 as a direct/shareable/SEO-friendly link even once the interactive tool exists.                                        |
+| `src/routes/team-builder/+page.svelte` | V3 (reconsider) | Role-locked (1 tank/2/2 for 5v5, up to 2 tanks/2/2 for 6v6 via a mode toggle), scored counter suggestions from the `matchups` fetch.                                                                               |
+| `src/routes/about/+page.svelte`        | MVP             | Project description, license summary, Blizzard IP attribution (section 11).                                                                                                                                        |
 
 Since every route is known and prerendered at build time (all 51 hero ids via `entries()`, plus the static routes), GitHub Pages doesn't need the usual SPA-on-static-hosting `404.html`-redirects-to-`index.html` workaround — every real URL has a real prerendered HTML file already. A genuine `src/routes/+error.svelte` still handles truly nonexistent hero ids (a real 404, not a routing hack).
 
@@ -215,13 +219,13 @@ Goal: serve the built site locally over a real hostname (not `localhost:5173`) s
 
 ### Why `to.counters.localhost`
 
-RFC 6761 reserves the entire `.localhost` TLD to always resolve to loopback (`127.0.0.1`) — modern OS resolvers and browsers honor this for *any* subdomain, not just literal `localhost`, so `to.counters.localhost` resolves without touching `/etc/hosts`. Chromium and Firefox also both treat `*.localhost` origins as secure contexts over plain HTTP, which matters here specifically because **service workers require a secure context to register** — this is what makes the whole offline-testing setup work without needing real TLS certs locally. Worth a quick manual check in devtools (Application → Service Workers) the first time this is wired up, since secure-context handling for `.localhost` subdomains is a browser implementation detail, not a formal guarantee.
+RFC 6761 reserves the entire `.localhost` TLD to always resolve to loopback (`127.0.0.1`) — modern OS resolvers and browsers honor this for _any_ subdomain, not just literal `localhost`, so `to.counters.localhost` resolves without touching `/etc/hosts`. Chromium and Firefox also both treat `*.localhost` origins as secure contexts over plain HTTP, which matters here specifically because **service workers require a secure context to register** — this is what makes the whole offline-testing setup work without needing real TLS certs locally. Worth a quick manual check in devtools (Application → Service Workers) the first time this is wired up, since secure-context handling for `.localhost` subdomains is a browser implementation detail, not a formal guarantee.
 
 ### `DEV_HOSTNAME` override — LAN testing on a real device
 
 The hostname is overridable via a gitignored `.env` (`DEV_HOSTNAME=...`, alongside `DOCKER_NETWORK_NAME`; see `.env.example`), defaulting to `to.counters.localhost`. The motivating case is pointing it at a LAN-reachable hostname instead (e.g. `to.counters.lan`, routed to the dev machine on the home network) to test on a real mobile device rather than a desktop browser.
 
-**Caveat, not a bug**: the secure-context exemption above is specific to `*.localhost` — a LAN hostname over plain HTTP does *not* get that same treatment from browsers. Overriding `DEV_HOSTNAME` to something like `to.counters.lan` still works for testing everything else (layout, mobile viewport, general app behavior), but the service worker won't register and PWA/offline behavior specifically won't be testable that way without real TLS. `to.counters.localhost` remains the only path for that.
+**Caveat, not a bug**: the secure-context exemption above is specific to `*.localhost` — a LAN hostname over plain HTTP does _not_ get that same treatment from browsers. Overriding `DEV_HOSTNAME` to something like `to.counters.lan` still works for testing everything else (layout, mobile viewport, general app behavior), but the service worker won't register and PWA/offline behavior specifically won't be testable that way without real TLS. `to.counters.localhost` remains the only path for that.
 
 ### Why the network is external and not committed
 
@@ -311,15 +315,15 @@ Sourced from the linked Figma file (`onebigfunction-library`). The file is a cus
 
 Base 500/700/900 shades come from the Tango Palette (a well-known open color set), with 50–300 interpolated by hand. Six semantic groups plus a black/white pair — `Neutral` uses a finer 9-step scale (50–900 in 100s), the rest use a 5-step scale (50/300/500/700 Main/900):
 
-| Group | 50 | 300 | 500 | 700 (Main) | 900 | Use |
-|---|---|---|---|---|---|---|
-| Neutral | `#F2F8FF` | `#A7CEFF` | `#546880` | `#232B36`¹ | `#12161C`¹ | Backgrounds, separators |
-| Primary | `#FCE2BD` | `#FCC97E` | `#FCAF3E` | `#F57900` | `#CE5C00` | Buttons, primary actions |
-| Secondary | `#FFEDFD` | `#E0BADC` | `#AD7FA8` | `#75507B` | `#5C3566` | Buttons, secondary actions |
-| Success | `#D4FFAB` | `#AFF26D` | `#8AE234` | `#73D216` | `#4E9A06` | Good things |
-| Warning | `#FFF49C` | `#FCED74` | `#FCE94F` | `#EDD400` | `#C4A000` | So-so things, possible issues |
-| Error | `#FFC4C4` | `#FA7575` | `#EF2929` | `#CC0000` | `#A40000` | Bad things, destruction |
-| Key | — | — | — | `#FFFFFF` | `#000000` | Black/white |
+| Group     | 50        | 300       | 500       | 700 (Main) | 900        | Use                           |
+| --------- | --------- | --------- | --------- | ---------- | ---------- | ----------------------------- |
+| Neutral   | `#F2F8FF` | `#A7CEFF` | `#546880` | `#232B36`¹ | `#12161C`¹ | Backgrounds, separators       |
+| Primary   | `#FCE2BD` | `#FCC97E` | `#FCAF3E` | `#F57900`  | `#CE5C00`  | Buttons, primary actions      |
+| Secondary | `#FFEDFD` | `#E0BADC` | `#AD7FA8` | `#75507B`  | `#5C3566`  | Buttons, secondary actions    |
+| Success   | `#D4FFAB` | `#AFF26D` | `#8AE234` | `#73D216`  | `#4E9A06`  | Good things                   |
+| Warning   | `#FFF49C` | `#FCED74` | `#FCE94F` | `#EDD400`  | `#C4A000`  | So-so things, possible issues |
+| Error     | `#FFC4C4` | `#FA7575` | `#EF2929` | `#CC0000`  | `#A40000`  | Bad things, destruction       |
+| Key       | —         | —         | —         | `#FFFFFF`  | `#000000`  | Black/white                   |
 
 ¹ Neutral's full scale also includes 100 (`#D9EAFF`), 200 (`#BFDCFF`), 400 (`#7590B2`), 600 (`#333F4E`), 800 (`#12161C`) — omitted from the table above to keep the 5-column layout consistent with the other groups.
 
@@ -327,8 +331,8 @@ Base 500/700/900 shades come from the Tango Palette (a well-known open color set
 
 Font: **Rubik** (Google Font, SIL Open Font License 1.1 — permissive, fine to bundle/embed independent of this project's own GPL/MIT choices). Three weights appear as parallel options in the source file — SemiBold (600), Bold (700), ExtraBold (800) — with no single one marked as the default, so pick one as the implementation default (SemiBold is the reasonable middle choice; Bold/ExtraBold read as emphasis variants) rather than treating all three as equally primary.
 
-| Style | Size |
-|---|---|
+| Style     | Size |
+| --------- | ---- |
 | Display 1 | 96px |
 | Display 2 | 64px |
 | Heading 1 | 48px |
@@ -342,7 +346,7 @@ A separate "Mobile Styles" frame in the same file has its own scale loosely base
 
 ### 10.3 Portrait art ~~— unresolved, blocks MVP~~
 
-~~MVP's core interaction is selecting a hero by its portrait, so this isn't a cosmetic gap — it's a blocking one. Using Blizzard's actual hero art directly carries real IP risk for a fan project: a search for an explicit Blizzard fan-content-use policy (comparable to what some other game companies publish) didn't turn up a clear grant — what exists covers fan art *submitted to* Blizzard, a different thing, plus general "no licensing without a formal agreement" language. Default plan until this is resolved: custom or community-licensed icons rather than official art, consistent with the unofficial-fan-project stance already in the licensing plan (section 11). Worth a direct check of blizzard.com/en-us/legal, or real legal advice, before committing to using official art.~~
+~~MVP's core interaction is selecting a hero by its portrait, so this isn't a cosmetic gap — it's a blocking one. Using Blizzard's actual hero art directly carries real IP risk for a fan project: a search for an explicit Blizzard fan-content-use policy (comparable to what some other game companies publish) didn't turn up a clear grant — what exists covers fan art _submitted to_ Blizzard, a different thing, plus general "no licensing without a formal agreement" language. Default plan until this is resolved: custom or community-licensed icons rather than official art, consistent with the unofficial-fan-project stance already in the licensing plan (section 11). Worth a direct check of blizzard.com/en-us/legal, or real legal advice, before committing to using official art.~~
 
 Blizzard's FAQ explicitly says [it's okay to use for noncommercial and personal use](https://www.blizzard.com/en-us/legal/c1ae32ac-7ff9-4ac3-a03b-fc04b8697010/blizzard-legal-faq#1649365241). Our usage of Blizzard IP seems to fall under this jurisdiction, there are other fan sites using it. We don't plan on monetizing anything here, so this seems to be in good order. We will pivot if anything changes.
 
@@ -368,7 +372,7 @@ Screenshot below taken on July 15, 2026, for historical records.
 - `packages/counters-web` → **GPLv3** (per-package `LICENSE` file + `package.json` `license` field — not yet scaffolded, tracked in `CLAUDE.md`).
 - Depends on `counters-data-core` (MIT) for types/data shape reference only — no code-sharing concern there since MIT can be freely consumed by a GPL package (just not the reverse).
 - The `about` route should carry the Blizzard Entertainment IP disclaimer (unofficial fan project, not affiliated with or endorsed by Blizzard) in addition to the root `NOTICE.md` — the in-app footer/about page is the more visible surface for end users who'll never see the repo.
-- The design system's color/type *values* (as opposed to the Figma source file) are just data — GPL's source-disclosure obligation doesn't reach the Figma project file itself, only the actual source of what's distributed. Keep the design tokens as plain values in the MIT layer if the future mobile client needs the same branding (same reasoning as the rest of the data layer — see `CLAUDE.md`'s licensing note).
+- The design system's color/type _values_ (as opposed to the Figma source file) are just data — GPL's source-disclosure obligation doesn't reach the Figma project file itself, only the actual source of what's distributed. Keep the design tokens as plain values in the MIT layer if the future mobile client needs the same branding (same reasoning as the rest of the data layer — see `CLAUDE.md`'s licensing note).
 
 ## 12. Testing Strategy
 
