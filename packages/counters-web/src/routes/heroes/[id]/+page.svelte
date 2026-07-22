@@ -1,6 +1,7 @@
 <script lang="ts">
 	import HeroBanner from './_components/HeroBanner.svelte';
 	import TagCloud from './_components/TagCloud.svelte';
+	import MatchupBadge from '$lib/components/MatchupBadge.svelte';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -21,18 +22,34 @@
 
 <section>
 	<h2>Weak To</h2>
-	<ul>
+	<div class="matchup-grid">
 		{#each data.hero.threats as threat (threat.heroId)}
-			<li>{threat.heroName} — {threat.matchedTraits.join(', ')}</li>
+			<MatchupBadge matchup={threat} />
 		{/each}
-	</ul>
+	</div>
 </section>
 
 <section>
 	<h2>Strong Against</h2>
-	<ul>
+	<div class="matchup-grid">
 		{#each data.hero.advantages as advantage (advantage.heroId)}
-			<li>{advantage.heroName} — {advantage.matchedTraits.join(', ')}</li>
+			<MatchupBadge matchup={advantage} />
 		{/each}
-	</ul>
+	</div>
 </section>
+
+<style>
+	.playbook {
+		padding: var(--space-4);
+		margin-bottom: var(--space-4);
+		border: 1px solid var(--color-border);
+		border-radius: var(--radius-md);
+		background: var(--color-surface);
+	}
+
+	.matchup-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+		gap: var(--space-2);
+	}
+</style>
