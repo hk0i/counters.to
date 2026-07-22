@@ -11,6 +11,7 @@
 	import { browser } from '$app/environment';
 	import { asset } from '$app/paths';
 	import OfflineBanner from '$lib/components/OfflineBanner.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 
 	let { children } = $props();
 
@@ -29,3 +30,5 @@
 <OfflineBanner />
 
 {@render children()}
+
+<Footer />
