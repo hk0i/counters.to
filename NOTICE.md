@@ -1,6 +1,6 @@
 # NOTICE
 
-Counters.to is an unofficial, fan-made project. It is not affiliated with,
+counters.to is an unofficial, fan-made project. It is not affiliated with,
 endorsed by, or sponsored by Blizzard Entertainment, Inc.
 
 Overwatch, Overwatch 2, and all associated hero names, logos, images, and

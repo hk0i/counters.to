@@ -9,14 +9,14 @@
 <h1>About Counters.to</h1>
 
 <p>
-	Counters.to helps you pick a hero by showing what it's weak to and which heroes exploit that
+	counters.to helps you pick a hero by showing what it's weak to and which heroes exploit that
 	weakness — pick an ally, see its threats; pick an enemy, see what beats it.
 </p>
 
 <h2>Disclaimer</h2>
 
 <p>
-	Counters.to is an unofficial, fan-made project. It is not affiliated with, endorsed by, or
+	counters.to is an unofficial, fan-made project. It is not affiliated with, endorsed by, or
 	sponsored by Blizzard Entertainment, Inc. Overwatch, Overwatch 2, and all associated hero names,
 	logos, images, and other assets are trademarks and/or copyrighted material of Blizzard
 	Entertainment, Inc. Hero profile data on this site consists of original strategic analysis and

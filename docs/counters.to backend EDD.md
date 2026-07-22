@@ -8,7 +8,7 @@
 
 ## **1\. Objective & Scope**
 
-This specification defines the strict flat-file content ingestion architecture, cross-validation compiler engine, and static REST-compliant endpoint generator for the Counters.to data layer. It provides zero-overhead data compilation for an offline-first PWA, optimized for a seamless transition to a live dynamic backend in V2.
+This specification defines the strict flat-file content ingestion architecture, cross-validation compiler engine, and static REST-compliant endpoint generator for the counters.to data layer. It provides zero-overhead data compilation for an offline-first PWA, optimized for a seamless transition to a live dynamic backend in V2.
 
 ## **2\. Ingestion & File Architecture**
 
